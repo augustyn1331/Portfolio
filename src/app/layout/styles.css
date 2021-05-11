@@ -11,3 +11,10 @@ body {
   margin: 0;
   padding: 0;
 }
+@media only screen and (max-width: 600px) {
+    br {
+  display: block; /* makes it have a width */
+  content: ""; /* clears default height */
+  margin-bottom: 1rem; /* change this to whatever height you want it */
+}
+}

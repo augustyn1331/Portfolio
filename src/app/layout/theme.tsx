@@ -5,7 +5,7 @@ const theme = createMuiTheme(
   {
     palette: {
       primary: {
-        light:"#f4f7fa",
+        light: "#f4f7fa",
         main: "rgb(23, 93, 175)",
         dark: "#243344",
       },
@@ -19,7 +19,6 @@ const theme = createMuiTheme(
     shape: {
       borderRadius: 12,
     },
-
     overrides: {
       MuiTooltip: {
         tooltip: {
@@ -38,8 +37,8 @@ const theme = createMuiTheme(
           padding: "0rem",
           margin: "0rem 1rem 1.5rem 1rem",
           color: "#243344",
-          letterSpacing:"-0.03em",
-          lineHeight:"1.20"
+          letterSpacing: "-0.03em",
+          lineHeight: "1.20",
         },
         subtitle1: {
           color: "#5c6573",
@@ -47,14 +46,12 @@ const theme = createMuiTheme(
           fontSize: "20px",
           textAlign: "center",
           margin: "0rem 1rem 0rem 1rem",
-          letterSpacing:"-0.01em",
+          letterSpacing: "-0.01em",
         },
         body1: {
-          color: "#5c6573",
+          color: "#f4f7fa",
           fontWeight: 400,
-          fontSize: "19px",
-          textAlign: "center",
-          margin: "0rem 1rem 0rem 1rem",
+          textAlign: "left",
         },
       },
       MuiListItemIcon: {
@@ -134,6 +131,11 @@ const theme = createMuiTheme(
           paddingLeft: "12px !important",
         },
       },
+      MuiContainer: {
+        root: {
+          padding: "0px !important",
+        },
+      },
       MuiButton: {
         startIcon: {
           marginRight: "4px",
@@ -146,7 +148,6 @@ const theme = createMuiTheme(
           "&:hover": {
             backgroundColor: "rgba(23, 93, 175, 0.2)",
           },
-
         },
         label: {
           fontWeight: 300,

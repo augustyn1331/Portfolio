@@ -1,8 +1,8 @@
 import { AppBar, Toolbar, IconButton, Drawer } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
-import React, { useState} from "react";
-import { Link as RouterLink} from "react-router-dom";
+import React, { useState } from "react";
+import { Link as LinkScroll } from "react-scroll";
 import logo from "../img/logo.png";
 import menuicon from "../img/menu_outlined_icon.svg";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -10,70 +10,78 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 const headersData = [
   {
     label: "O MNIE",
-    href: "/Portfolio/AboutMe",
+    href: "AboutMe",
   },
   {
     label: "PROJEKTY",
-    href: "/Portfolio/Projects",
+    href: "Projects",
   },
   {
     label: "KONTAKT",
-    href: "/Portfolio/Contacts",
+    href: "Contacts",
   },
 ];
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
-  header: {
-    zIndex: 2,
-    background: theme.palette.primary.main,
-    transition: "background 0.01s ease-in",
-    willChange: "background",
+  flexbox:{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
   drawer: {
     zIndex: 2,
     background: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
-    transition: "background 0.01s ease-in",
-    willChange: "background",
-  },
-  toolbarMobile: {
-    display: "flex",
-    justifyContent: "space-between",
-    background: theme.palette.primary.main,
-    transition: "background 0.3s ease-out",
-    willChange: "background",
   },
   toolbar: {
-    display: "flex",
     justifyContent: "space-between",
   },
   drawerContainer: {
     padding: "20px 30px",
+    flexDirection: "column",
+  },  
+  wrapper: {
+    marginTop: "0px",
+    flexDirection: "row",
+    marginRight: "0rem",
+    [theme.breakpoints.up("lg")]: {
+      marginRight: "64px",
+    },
   },
-  logoclass: {
+  //logo styling
+  logoImage: {
     boxSizing: "content-box",
-    height: "53px",
+    height: "50px",
     [theme.breakpoints.up("md")]: {
       height: "60px",
     },
-  },
-  logobutton: {
+  },  
+  logoButton: {
     marginLeft: "4px",
     [theme.breakpoints.up("lg")]: {
       marginLeft: "100px",
     },
+    [theme.breakpoints.down("sm")]:{
+      height:"62px !important"
+    }
   },
-  noHover: {
-    "&:hover": {
+  noHoverOnLogo:{
+  "&:hover": {
       backgroundColor: "transparent",
     },
   },
-  morebutton: {
+  //making react-scroll link same size as button it's wrapped in
+  reactScrollLink: {
+    padding: "13.5px 0px",
+  },
+  // Menu button Styling
+  menuButton: {
     width: "50px",
     padding: "0px 8px",
     boxSizing: "content-box",
+    height:"62px !important"
   },
-  moreicon: {
-    fontSize: "55px",
-    color:"#f4f7fa",
+  menuIcon: {
+    color: "#f4f7fa",
+    height: "47px",
   },
   navLinks: {
     position: "relative",
@@ -83,13 +91,9 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       marginRight: "32px",
     },
     padding: "0px 2px",
-    letterSpacing:"1px !important",
+    letterSpacing: "1px !important",
     cursor: "pointer",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     textDecoration: "none !important",
-    textTransform: "uppercase",
     color: theme.palette.primary.dark,
     [theme.breakpoints.up("md")]: {
       color: theme.palette.primary.light,
@@ -127,17 +131,6 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       transform: "scale(1, 1)",
     },
   },
-  wrapper: {
-    display: "flex",
-    marginTop: "0px",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "row",
-    marginRight: "0rem",
-    [theme.breakpoints.up("lg")]: {
-      marginRight: "64px",
-    },
-  },
 }));
 
 export default function NavBar() {
@@ -148,11 +141,9 @@ export default function NavBar() {
   const mobileView = useMediaQuery(theme.breakpoints.down("sm"));
 
   /*Open and Close drawer */
-  const handleDrawerOpen = () =>
-    setDrawerOpen(true);
+  const handleDrawerOpen = () => setDrawerOpen(true);
 
-  const handleDrawerClose = () =>
-    setDrawerOpen(false);
+  const handleDrawerClose = () => setDrawerOpen(false);
 
   const classes = useStyles();
   /* Display desktop Navbar */
@@ -160,17 +151,17 @@ export default function NavBar() {
     return (
       <Toolbar className={classes.toolbar}>
         {myLogo()}
-        <div className={classes.wrapper}>{getDesktopLinks()}</div>
+        <div className={`${classes.wrapper} ${classes.flexbox}`}>{getDesktopLinks()}</div>
       </Toolbar>
     );
   };
   /* Display mobile Navbar */
   const displayMobile = () => {
     return (
-      <Toolbar className={classes.toolbarMobile}>
+      <Toolbar className={classes.toolbar}>
         {myLogo()}
-        <IconButton className={classes.morebutton} onClick={handleDrawerOpen}>
-      <img className={classes.moreicon} src={menuicon}/>
+        <IconButton className={classes.menuButton} onClick={handleDrawerOpen}>
+          <img className={classes.menuIcon} src={menuicon} alt="more" />
         </IconButton>
 
         <Drawer
@@ -181,47 +172,64 @@ export default function NavBar() {
             onClose: handleDrawerClose,
           }}
         >
-          <div className={classes.drawerContainer}>{getDrawerChoices()}</div>
+          <div className={`${classes.drawerContainer} ${classes.flexbox}`}>{getDrawerChoices()}</div>
         </Drawer>
       </Toolbar>
     );
   };
-   /* Mapping drawer links */
+
+  const myLogo = () => {
+    return (
+      <Button
+        classes={{ root: classes.logoButton }}
+        {...{
+          className: classes.noHoverOnLogo,
+        }}
+        disableFocusRipple
+        disableRipple
+      >
+        <LinkScroll
+          to={"Home"}
+          smooth={true}
+          duration={500}
+          spy={true}
+          offset={-76}
+          exact='true'
+          className={`${classes.reactScrollLink} ${classes.flexbox}`}
+        >
+          <img className={classes.logoImage} src={logo} alt="car" />
+        </LinkScroll>
+      </Button>
+    );
+  };
+
+  /* Mapping drawer links */
   const getDrawerChoices = () => {
     return headersData.map(({ label, href }) => {
       return (
         <Button
-          onClick={handleDrawerClose}
           {...{
             key: label,
-            to: href,
-            component: RouterLink,
             className: classes.navLinks,
           }}
           disableFocusRipple
           disableRipple
         >
-          {label}
+          <LinkScroll
+            to={href}
+            smooth={true}
+            duration={500}
+            spy={true}
+            offset={-62} //different offset for mobile nav
+            exact='true'
+            className={classes.reactScrollLink}
+            onClick={handleDrawerClose}
+          >
+            {label}
+          </LinkScroll>
         </Button>
       );
     });
-  };
-  
-  const myLogo = () => {
-    return (
-      <Button
-        classes={{ label: classes.logobutton }}
-        {...{
-          to: "/Portfolio/",
-          component: RouterLink,
-          className: classes.noHover,
-        }}
-        disableFocusRipple
-        disableRipple
-      >
-          <img className={classes.logoclass} src={logo} alt="car"/>
-      </Button>
-    );
   };
 
   /* Mapping desktop links */
@@ -231,24 +239,32 @@ export default function NavBar() {
         <Button
           {...{
             key: label,
-            to: href,
-            component: RouterLink,
             className: classes.navLinks,
           }}
           disableFocusRipple
           disableRipple
         >
-          {label}
+          <LinkScroll
+            to={href}
+            smooth={true}
+            duration={500}
+            spy={true}
+            offset={0}
+            exact='true'
+            className={classes.reactScrollLink}
+          >
+            {label}
+          </LinkScroll>
         </Button>
       );
     });
   };
 
- /* Slight shadow only on Mobile Navbar*/
+  /* Slight shadow only on Mobile Navbar*/
 
   return (
-      <AppBar className={classes.header} elevation={mobileView? 1:0}>
-        {mobileView ? displayMobile() : displayDesktop()}
-      </AppBar>
+    <AppBar elevation={mobileView ? 1 : 0}>
+      {mobileView ? displayMobile() : displayDesktop()}
+    </AppBar>
   );
 }

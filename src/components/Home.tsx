@@ -9,30 +9,31 @@ import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 // import "aos/dist/aos.css";
 import Mobiletesting from "../img/startup.svg";
 import { useTheme } from "@material-ui/core/styles";
+import { Link as LinkScroll } from "react-scroll";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    minHeight: "100vh",
-    paddingTop: "80px",
+  flexbox:{
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+  },
+  root: {
+    minHeight: "100vh",
+    paddingTop: "76px",
+    background: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
     flexDirection: "column",
     [theme.breakpoints.up("md")]: {
-      flexDirection: "row !important",
+      flexDirection: "row",
     },
-    background: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
   },
   svgWrap: {
     maxWidth: "250px",
-    boxSizing: "border-box",
-    margin: "16px 16px",
+    margin: "32px",
     [theme.breakpoints.up("sm")]: {
       maxWidth: "350px",
     },
     [theme.breakpoints.up("md")]: {
       maxWidth: "400px",
-      margin: "16px 30px",
     },
     [theme.breakpoints.up("lg")]: {
       maxWidth: "550px",
@@ -54,19 +55,19 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem 6px",
   },
   buttonRoot: {
-    color: "#243344",
+    color: theme.palette.primary.dark,
     height: "45px !important",
-    fontSize: "1.4rem",
+    fontSize: "1.3rem",
     letterSpacing: "-0.03em",
   },
   wrapper: {
-    display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    margin: "16px 0px",
+    margin: "76px 0px 12px 0px",
+    [theme.breakpoints.up("sm")]: {
+      margin: "80px 0px 16px 0px",
+    },
     [theme.breakpoints.up("md")]: {
-      margin: "16px 30px",
+      margin: "16px 40px",
     },
     [theme.breakpoints.up("lg")]: {
       margin: "16px 65px",
@@ -84,13 +85,16 @@ export default function Home() {
   // }, []);
   const classes = useStyles();
   return (
-    <Container className={classes.root} maxWidth="xl" id="home">
-      <div className={classes.wrapper}>
+    <Container className={`${classes.root} ${classes.flexbox}`} maxWidth="xl" id="Home">
+      <div className={`${classes.wrapper} ${classes.flexbox}`} >
         <Typography variant="h1" component="h1">
           Hej, tu Augustyn!
         </Typography>
-        <Typography variant="subtitle1" component="p">
-          Witam Cię na moim portfolio!<br/> Dowiedz się o mnie więcej, klikając na poniższy przycisk!
+        <Typography variant="subtitle1" component="h6">
+          Witam Cię na moim portfolio!
+        </Typography>
+        <Typography variant="subtitle1" component="h6">
+          Dowiedz się o mnie więcej, klikając na poniższy przycisk!
         </Typography>
         <div
           data-aos="fade-right"
@@ -99,8 +103,7 @@ export default function Home() {
         >
           <MuiButton
             {...{
-              to: "/Portfolio/",
-              component: RouterLink,
+              component: LinkScroll,
             }}
             variant={"outlined"}
             className={classes.button}
@@ -108,9 +111,21 @@ export default function Home() {
               root: classes.buttonRoot,
             }}
           >
-            <EmojiPeopleIcon className={classes.emojiicon} />
+            <LinkScroll
+          to={"AboutMe"}
+          smooth={true}
+          duration={500}
+          spy={true}
+          offset={-76}
+          exact='true'
+          className={classes.flexbox}
+        >
+         <EmojiPeopleIcon className={classes.emojiicon} />
             WIĘCEJ
+        </LinkScroll>
           </MuiButton>
+          
+          
         </div>
       </div>
       <div className={classes.svgWrap}>
