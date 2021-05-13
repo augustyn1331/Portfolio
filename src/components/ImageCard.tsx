@@ -8,13 +8,11 @@ import { Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
   media: {
-    maxHeight: 375,
-    maxWidth: 250,
+    maxHeight: "375px",
+    maxWidth: "250px",
     [theme.breakpoints.up('md')]: {
-      maxHeight: 450,
-      maxWidth: 300,
-      height: 450,
-      width: 300,
+      height: "420px",
+      width: "280px",
     },
   },
   cardContent:{
@@ -62,8 +60,8 @@ export default function ImageCard(props: any) {
         <CardContent className={classes.cardContent} classes={{root: state.raised ? classes.textHovered : ""}}>
           <Typography
             gutterBottom
-            variant="h4"
-            component="h1"
+            variant="h3"
+            component="h3"
             className={title}
           >
             {place.title}

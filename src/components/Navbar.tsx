@@ -18,7 +18,7 @@ const headersData = [
   },
   {
     label: "KONTAKT",
-    href: "Contacts",
+    href: "Contact",
   },
 ];
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
@@ -220,7 +220,7 @@ export default function NavBar() {
             smooth={true}
             duration={500}
             spy={true}
-            offset={-62} //different offset for mobile nav
+            offset={-61} //different offset for mobile nav
             exact='true'
             className={classes.reactScrollLink}
             onClick={handleDrawerClose}
@@ -263,7 +263,8 @@ export default function NavBar() {
   /* Slight shadow only on Mobile Navbar*/
 
   return (
-    <AppBar elevation={mobileView ? 1 : 0}>
+  <AppBar data-aos="fade-down"
+  data-aos-delay="200" elevation={mobileView ? 1 : 0}>
       {mobileView ? displayMobile() : displayDesktop()}
     </AppBar>
   );

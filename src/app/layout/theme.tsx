@@ -32,13 +32,26 @@ const theme = createMuiTheme(
       },
       MuiTypography: {
         h1: {
-          fontWeight: 700,
+          fontWeight: 600,
           textAlign: "center",
           padding: "0rem",
-          margin: "0rem 1rem 1.5rem 1rem",
-          color: "#243344",
+          margin: "1.5rem 1rem 1.5rem 1rem",
           letterSpacing: "-0.03em",
           lineHeight: "1.20",
+        },
+        h2: {
+          fontWeight: 600,
+          textAlign: "center",
+          padding: "0rem",
+          margin: "1.5rem 1rem 1.5rem 1rem",
+          letterSpacing: "-0.03em",
+        },
+        h3: {
+          fontWeight: 500,
+          textAlign: "center",
+          padding: "0rem",
+          letterSpacing: "-0.01em",
+          color: "#45435f",
         },
         subtitle1: {
           color: "#5c6573",
@@ -53,6 +66,13 @@ const theme = createMuiTheme(
           fontWeight: 400,
           textAlign: "left",
         },
+        body2:{
+          color: "#45435f",
+          fontWeight: 300,
+          textAlign: "center",
+          letterSpacing: "-0.01em",
+          lineHeight: "1.4",
+        }
       },
       MuiListItemIcon: {
         root: {

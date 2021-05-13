@@ -24,6 +24,24 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
         fontSize: "3.2rem !important",
       },
     },   
+    h2:{
+      fontSize:"2.6rem !important",
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "3.2rem !important",
+      },
+      [theme.breakpoints.up("lg")]: {
+        fontSize: "3.5rem !important",
+      },
+    },   
+    h3:{
+      fontSize:"1.3rem !important",
+      [theme.breakpoints.up("sm")]: {
+        fontSize: "1.7rem !important",
+      },
+      [theme.breakpoints.up("lg")]: {
+        fontSize: "1.7rem !important",
+      },
+    },  
     h6:{
       fontSize:"0.9rem !important",
       [theme.breakpoints.up("sm")]: {
