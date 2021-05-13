@@ -14,7 +14,10 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     minHeight: "100vh",
-    paddingTop: "76px",
+    padding: "0px 16px 32px 16px !important",
+    [theme.breakpoints.up("md")]: {
+      padding: "76px 16px 76px 16px !important",
+    },
     background: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
     flexDirection: "column",
     [theme.breakpoints.up("md")]: {

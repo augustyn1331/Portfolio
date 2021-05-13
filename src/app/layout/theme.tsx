@@ -56,7 +56,7 @@ const theme = createMuiTheme(
         subtitle1: {
           color: "#5c6573",
           fontWeight: 400,
-          fontSize: "20px",
+          fontSize: "19px",
           textAlign: "center",
           margin: "0rem 1rem 0rem 1rem",
           letterSpacing: "-0.01em",
@@ -153,7 +153,9 @@ const theme = createMuiTheme(
       },
       MuiContainer: {
         root: {
-          padding: "0px !important",
+          padding: "0px",
+          paddingLeft:"0px",
+          paddingRight:"0px"
         },
       },
       MuiButton: {

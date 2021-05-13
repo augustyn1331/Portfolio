@@ -8,11 +8,9 @@ import { Theme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme: Theme) => ({
   media: {
-    maxHeight: "375px",
     maxWidth: "250px",
     [theme.breakpoints.up('md')]: {
-      height: "420px",
-      width: "280px",
+      width: "240px",
     },
   },
   cardContent:{

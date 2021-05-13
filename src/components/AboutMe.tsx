@@ -16,8 +16,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100vh",
     background: theme.palette.primary.main,
-    paddingLeft: "16px !important",
-    paddingRight: "16px !important",
+    padding: "0px 16px 32px 16px !important",
+    [theme.breakpoints.up("md")]: {
+      padding: "76px 16px 76px 16px !important",
+    },
+    
   },
   photo: {
     height: "110px",
@@ -38,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
       height: "250px",
     },
     [theme.breakpoints.up("lg")]: {
-      height: "360px",
+      height: "300px",
       margin: "20px 45px 20px 35px",
     },
   },

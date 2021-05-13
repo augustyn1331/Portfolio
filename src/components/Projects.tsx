@@ -17,13 +17,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: "100vh",
     background: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
-    paddingLeft: "16px !important",
-    paddingRight: "16px !important",
+    padding: "0px 16px 76px 16px !important",
+    [theme.breakpoints.up("md")]: {
+      padding: "76px 16px 76px 16px !important",
+    },
   },
   wrapper: {
-    [theme.breakpoints.down("sm")]: {
-      margin: "0px 0px 100px 0px",
-    },
     [theme.breakpoints.only("sm")]: {
       flexDirection: "row",
     },
@@ -34,12 +33,12 @@ const useStyles = makeStyles((theme) => ({
   card: {
     maxWidth: 250,
     background: "white",
-    margin: "20px",
+    margin: "16px 24px 24px 24px",
     display: "flex",
     flexDirection: "column",
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
-      maxWidth: 500,
+      maxWidth: 460,
     },
     transition: "transform 0.15s ease-in-out",
     cursor: "pointer",
@@ -67,15 +66,12 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
   },
   center: {
-    [theme.breakpoints.down("sm")]: {
-      display: "none !important!",
-    },
     margin: "32px 0px 0px 0px",
     [theme.breakpoints.up("md")]: {
       margin: "16px 40px 16px 40px",
     },
     [theme.breakpoints.up("lg")]: {
-      margin: "24px 65px 24px 65px",
+      margin: "0px 65px 24px 65px",
     },
   },
 }));

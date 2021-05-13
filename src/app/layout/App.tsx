@@ -11,8 +11,8 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   "@global": {
     html: {
       fontSize: "19px",
-      [theme.breakpoints.up("sm")]: {
-        fontSize: "20px",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "18px",
       },
     },
     h1:{

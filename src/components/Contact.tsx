@@ -16,8 +16,10 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     minHeight: "100vh",
     background: theme.palette.primary.main,
-    paddingLeft: "16px !important",
-    paddingRight: "16px !important",
+    padding: "0px 16px 0px 16px !important",
+    [theme.breakpoints.up("md")]: {
+      padding: "76px 16px 76px 16px !important",
+    },
   },
   contactLinks: {
     position: "relative",
@@ -106,7 +108,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   noMargin: {
     [theme.breakpoints.down("md")]: {
-      margin: "0px",
+      margin: "1.5rem 1rem 0rem 1rem",
     },
   },
 }));
