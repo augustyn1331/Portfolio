@@ -1,5 +1,4 @@
 import { AppBar, Toolbar, IconButton, Drawer } from "@material-ui/core";
-import Button from "@material-ui/core/Button";
 import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import React, { useState } from "react";
 import { Link as LinkScroll } from "react-scroll";
@@ -21,12 +20,14 @@ const headersData = [
     href: "Contact",
   },
 ];
+
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
-  flexbox:{
+  flexbox: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
+  //Containers
   drawer: {
     zIndex: 2,
     background: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
@@ -37,99 +38,72 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   drawerContainer: {
     padding: "20px 30px",
     flexDirection: "column",
-  },  
-  wrapper: {
-    marginTop: "0px",
-    flexDirection: "row",
-    marginRight: "0rem",
-    [theme.breakpoints.up("lg")]: {
-      marginRight: "64px",
-    },
+    listStyleType:"none !important"
   },
-  //logo styling
+  //Logo img and logo link
   logoImage: {
     boxSizing: "content-box",
     height: "50px",
     [theme.breakpoints.up("md")]: {
       height: "60px",
     },
-  },  
-  logoButton: {
+  },
+  logoLink: {
     marginLeft: "4px",
+    cursor: "pointer",
     [theme.breakpoints.up("lg")]: {
       marginLeft: "100px",
     },
-    [theme.breakpoints.down("sm")]:{
-      height:"62px !important"
-    }
-  },
-  noHoverOnLogo:{
-  "&:hover": {
-      backgroundColor: "transparent",
+    [theme.breakpoints.down("sm")]: {
+      height: "62px !important",
     },
   },
-  //making react-scroll link same size as button it's wrapped in
-  reactScrollLink: {
-    padding: "13.5px 0px",
-  },
-  // Menu button Styling
+  //Menu button
   menuButton: {
     width: "50px",
     padding: "0px 8px",
     boxSizing: "content-box",
-    height:"62px !important"
+    height: "62px !important",
   },
   menuIcon: {
     color: "#f4f7fa",
     height: "47px",
   },
-  navLinks: {
-    position: "relative",
-    fontSize: "1.40rem",
-    margin: "0rem 1rem",
+  //Menu links
+  navUl: {
+    marginTop: "0px",
+    flexDirection: "row",
+    marginRight: "0rem",
     [theme.breakpoints.up("lg")]: {
-      marginRight: "32px",
+      marginRight: "64px",
     },
+    listStyleType:"none !important"
+  },
+  navList: {
+    height: "76px",
+    margin: "0rem 1rem",
+  },
+  navLink: {
+    position: "relative",
+    height: "100%",
+    fontSize: "1.45rem",
+    fontWeight: 300,
+    letterSpacing: "0.9px",
     padding: "0px 2px",
-    letterSpacing: "1px !important",
     cursor: "pointer",
-    textDecoration: "none !important",
+    textDecoration: "none",
     color: theme.palette.primary.dark,
     [theme.breakpoints.up("md")]: {
       color: theme.palette.primary.light,
     },
-    transition: "color 0.3s ease-in-out",
-    willChange: "color",
-    "&:hover": {
-      backgroundColor: "transparent",
+    "&.active": {
+      borderBottom: "3px solid #f86d70",
     },
-    "&::before": {
-      content: "''",
-      display: "block",
-      position: "absolute",
-      bottom: "12px",
-      height: "2px",
-      width: "100%",
-      WebkitTransformOrigin: "center top",
-      transformOrigin: "center top",
-      WebkitTransform: "scale(0, 1)",
-      transform: "scale(0, 1)",
-      transition:
-        "color 0.1s, transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out",
-    },
-    "&::before, &:active::before": {
-      backgroundColor: theme.palette.primary.dark,
-      [theme.breakpoints.up("md")]: {
-        backgroundColor: theme.palette.primary.light,
-      },
-      willChange: "background-color",
-    },
-    "&:hover::before, &:focus::before": {
-      WebkitTransformOrigin: "center top",
-      transformOrigin: "center top",
-      WebkitTransform: "scale(1, 1)",
-      transform: "scale(1, 1)",
-    },
+    // transition: "color ease-in-out 0.4s",
+    // "&:hover": {
+    //   color: "#f99fa0",
+    //   transition: "color ease-in-out 0.4s",
+    // },
   },
 }));
 
@@ -139,19 +113,18 @@ export default function NavBar() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   /* Mobile View Query from Material UI*/
   const mobileView = useMediaQuery(theme.breakpoints.down("sm"));
-
   /*Open and Close drawer */
   const handleDrawerOpen = () => setDrawerOpen(true);
-
   const handleDrawerClose = () => setDrawerOpen(false);
-
   const classes = useStyles();
   /* Display desktop Navbar */
   const displayDesktop = () => {
     return (
       <Toolbar className={classes.toolbar}>
         {myLogo()}
-        <div className={`${classes.wrapper} ${classes.flexbox}`}>{getDesktopLinks()}</div>
+        <ul className={`${classes.navUl} ${classes.flexbox}`}>
+          {getDesktopLinks()}
+        </ul>
       </Toolbar>
     );
   };
@@ -163,7 +136,6 @@ export default function NavBar() {
         <IconButton className={classes.menuButton} onClick={handleDrawerOpen}>
           <img className={classes.menuIcon} src={menuicon} alt="more" />
         </IconButton>
-
         <Drawer
           classes={{ paper: classes.drawer }}
           {...{
@@ -172,7 +144,9 @@ export default function NavBar() {
             onClose: handleDrawerClose,
           }}
         >
-          <div className={`${classes.drawerContainer} ${classes.flexbox}`}>{getDrawerChoices()}</div>
+         <ul className={`${classes.drawerContainer} ${classes.flexbox}`}>
+            {getDrawerChoices()}
+          </ul>
         </Drawer>
       </Toolbar>
     );
@@ -180,26 +154,17 @@ export default function NavBar() {
 
   const myLogo = () => {
     return (
-      <Button
-        classes={{ root: classes.logoButton }}
-        {...{
-          className: classes.noHoverOnLogo,
-        }}
-        disableFocusRipple
-        disableRipple
-      >
         <LinkScroll
           to={"Home"}
           smooth={true}
           duration={500}
           spy={true}
           offset={-76}
-          exact='true'
-          className={`${classes.reactScrollLink} ${classes.flexbox}`}
+          exact="true"
+          className={`${classes.logoLink} ${classes.flexbox}`}
         >
           <img className={classes.logoImage} src={logo} alt="car" />
         </LinkScroll>
-      </Button>
     );
   };
 
@@ -207,27 +172,23 @@ export default function NavBar() {
   const getDrawerChoices = () => {
     return headersData.map(({ label, href }) => {
       return (
-        <Button
-          {...{
-            key: label,
-            className: classes.navLinks,
-          }}
-          disableFocusRipple
-          disableRipple
-        >
+        <li
+          key ={label}
+          className={classes.navList}
+      >
           <LinkScroll
             to={href}
             smooth={true}
             duration={500}
             spy={true}
             offset={-61} //different offset for mobile nav
-            exact='true'
-            className={classes.reactScrollLink}
+            exact="true"
+            className={`${classes.navLink} ${classes.flexbox}`}
             onClick={handleDrawerClose}
           >
             {label}
           </LinkScroll>
-        </Button>
+        </li>
       );
     });
   };
@@ -236,35 +197,33 @@ export default function NavBar() {
   const getDesktopLinks = () => {
     return headersData.map(({ label, href }) => {
       return (
-        <Button
-          {...{
-            key: label,
-            className: classes.navLinks,
-          }}
-          disableFocusRipple
-          disableRipple
+        <li
+          key ={label}
+          className={classes.navList}
+      >
+        <LinkScroll
+                to={href}
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-76}
+                exact="true"
+                className={`${classes.navLink} ${classes.flexbox}`}
         >
-          <LinkScroll
-            to={href}
-            smooth={true}
-            duration={500}
-            spy={true}
-            offset={0}
-            exact='true'
-            className={classes.reactScrollLink}
-          >
-            {label}
-          </LinkScroll>
-        </Button>
+          {label}
+        </LinkScroll>
+      </li>
       );
     });
   };
 
   /* Slight shadow only on Mobile Navbar*/
-
   return (
-  <AppBar data-aos="fade-down"
-  data-aos-delay="200" elevation={mobileView ? 1 : 0}>
+    <AppBar
+      data-aos="fade-down"
+      data-aos-delay="200"
+      elevation={mobileView ? 1 : 0}
+    >
       {mobileView ? displayMobile() : displayDesktop()}
     </AppBar>
   );

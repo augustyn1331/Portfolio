@@ -46,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem 6px",
   },
   buttonRoot: {
-    color: theme.palette.primary.dark,
     height: "45px !important",
     fontSize: "1.3rem",
     letterSpacing: "-0.03em",

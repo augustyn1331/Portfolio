@@ -158,6 +158,11 @@ const theme = createMuiTheme(
           paddingRight:"0px"
         },
       },
+      MuiTouchRipple:{
+        rippleVisible:{
+          // color:"rgba(23, 93, 175, 0.5)",
+        }
+      },
       MuiButton: {
         startIcon: {
           marginRight: "4px",
@@ -167,8 +172,11 @@ const theme = createMuiTheme(
           borderWidth: "2px",
           borderStyle: "solid",
           borderColor: "#243344",
+          transition: "border-color ease-in-out 0.4s, color ease-in-out 0.4s, background-color ease-in-out 0.4s",
           "&:hover": {
-            backgroundColor: "rgba(23, 93, 175, 0.2)",
+            borderColor: "rgb(23, 93, 175)",
+            color:"rgb(23, 93, 175)",
+            transition: "border-color ease-in-out 0.4s, color ease-in-out 0.4s, background-color ease-in-out 0.4s",
           },
         },
         label: {

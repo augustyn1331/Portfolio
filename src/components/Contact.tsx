@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     background: theme.palette.primary.main,
     padding: "0px 16px 0px 16px !important",
     [theme.breakpoints.up("md")]: {
-      padding: "76px 16px 76px 16px !important",
+      padding: "0px 16px 76px 16px !important",
     },
   },
   contactLinks: {

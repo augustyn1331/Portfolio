@@ -3,7 +3,6 @@ import "./styles.css";
 import theme from "./theme";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import {Redirect, Route, Switch } from "react-router-dom";
-import NavBar from "../../components/Navbar";
 import OneLongPage from "../../pages/OneLongPage";
 import { makeStyles, Theme, ThemeProvider } from "@material-ui/core/styles";
 
@@ -63,7 +62,6 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-        <NavBar />
         <Switch>
           <Route exact path="/">
             <Redirect to="/Portfolio/"/>

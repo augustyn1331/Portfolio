@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     background: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
     padding: "0px 16px 76px 16px !important",
     [theme.breakpoints.up("md")]: {
-      padding: "76px 16px 76px 16px !important",
+      padding: "0px 16px 76px 16px !important",
     },
   },
   wrapper: {
