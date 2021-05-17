@@ -13,7 +13,7 @@ const OneLongPage = ()=>{
         AOS.init({ once: true,
             duration: 300,
             easing: 'ease-out-quart',
-          disable: window.innerWidth < 960});
+          });
       }, []);
     return(
         <>
