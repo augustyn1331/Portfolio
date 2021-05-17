@@ -56,7 +56,6 @@ const theme = createMuiTheme(
         subtitle1: {
           color: "#5c6573",
           fontWeight: 400,
-          fontSize: "19px",
           textAlign: "center",
           margin: "0rem 1rem 0rem 1rem",
           letterSpacing: "-0.01em",

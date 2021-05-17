@@ -43,7 +43,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       },
     },
     h6: {
-      fontSize: "0.9rem !important",
+      fontSize: "0.85rem !important",
       [theme.breakpoints.up("sm")]: {
         fontSize: "1rem !important",
       },
@@ -72,7 +72,7 @@ const App = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 2500);
+    }, 0);
   }, []);
 
   return (

@@ -5,7 +5,6 @@ import { default as MuiButton } from "@material-ui/core/Button";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import Svg from "../img/startup.svg";
 import { Link as LinkScroll } from "react-scroll";
-
 const useStyles = makeStyles((theme) => ({
   flexbox: {
     display: "flex",
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   svgWrap: {
     maxWidth: "230px",
-    margin: "32px",
+    margin: "16px",
     [theme.breakpoints.up("sm")]: {
       maxWidth: "350px",
     },
@@ -46,8 +45,12 @@ const useStyles = makeStyles((theme) => ({
     padding: "1rem 6px",
   },
   buttonRoot: {
-    height: "45px !important",
-    fontSize: "1.3rem",
+    height: "40px !important",
+    fontSize: "1.2rem",
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "1.3rem",
+      height: "45px !important",
+    },
     letterSpacing: "-0.03em",
   },
   wrapper: {
@@ -94,38 +97,40 @@ export default function Home() {
             Dowiedz się o mnie więcej, klikając na poniższy przycisk!
           </Typography>
         </div>
-        <div data-aos="fade-up" data-aos-delay="2000">
-
-
-                  <MuiButton
-          {...{
-            component: LinkScroll,
-          }}
-          variant={"outlined"}
-          className={classes.button}
-          classes={{
-            root: classes.buttonRoot,
-          }}
-        >
-          <LinkScroll
-            to={"AboutMe"}
-            smooth={true}
-            duration={500}
-            spy={true}
-            offset={-62}
-            exact="true"
-            className={classes.flexbox}
+        <div data-aos="zoom-in" data-aos-delay="2000">
+          <MuiButton
+            {...{
+              component: LinkScroll,
+            }}
+            variant={"outlined"}
+            className={classes.button}
+            classes={{
+              root: classes.buttonRoot,
+            }}
           >
-            <EmojiPeopleIcon className={classes.emojiicon} />
-            WIĘCEJ
-          </LinkScroll>
-        </MuiButton>
+            <LinkScroll
+              to={"AboutMe"}
+              smooth={true}
+              duration={500}
+              spy={true}
+              offset={-62}
+              exact="true"
+              className={classes.flexbox}
+            >
+              <EmojiPeopleIcon className={classes.emojiicon} />
+              WIĘCEJ
+            </LinkScroll>
+          </MuiButton>
         </div>
-
       </div>
-      <div className={classes.svgWrap} data-aos-delay="200" data-aos="fade-down">
-        <img className={classes.svgStyle} src={Svg} alt="car" />
-      </div>
+        <div
+          className={classes.svgWrap}
+          data-aos-delay="200"
+          data-aos="fade-down"
+          data-aos-anchor-placement="top-bottom"
+        >
+          <img className={classes.svgStyle} src={Svg} alt="car" />
+        </div>
     </Container>
   );
 }

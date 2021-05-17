@@ -1,4 +1,3 @@
-
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import ImageCard from "./ImageCard";
 import add from "../img/add.png";
@@ -79,7 +78,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Projects() {
   const classes = useStyles();
   const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up("md"));
+  const desktopView = useMediaQuery(theme.breakpoints.up("md"));
   const places = [
     {
       title: "Okienko popup",
@@ -112,30 +111,43 @@ export default function Projects() {
         className={`${classes.wrapper} ${classes.flexbox}`}
         maxWidth="xl"
       >
-        <div
-          data-aos="fade-right"
-          data-aos-delay="1000"
-        >
-          <ImageCard
-            place={places[1]}
-            card={classes.card}
-            title={classes.title}
-            desc={classes.desc}
-          />
-        </div>
-        <div
-          data-aos="fade-left"
-          data-aos-delay="500"
-        >
-          <ImageCard
-            place={places[0]}
-            card={classes.card}
-            title={classes.title}
-            desc={classes.desc}
-          />
-        </div>
+        {desktopView ? (
+          <>
+            <div data-aos="fade-right" data-aos-delay="1000">
+              <ImageCard
+                place={places[1]}
+                card={classes.card}
+                title={classes.title}
+                desc={classes.desc}
+              />
+            </div>
+            <div data-aos="fade-left" data-aos-delay="500">
+              <ImageCard
+                place={places[0]}
+                card={classes.card}
+                title={classes.title}
+                desc={classes.desc}
+              />
+            </div>{" "}
+          </>
+        ) : (
+          <>
+            <ImageCard
+              place={places[1]}
+              card={classes.card}
+              title={classes.title}
+              desc={classes.desc}
+            />
+            <ImageCard
+              place={places[0]}
+              card={classes.card}
+              title={classes.title}
+              desc={classes.desc}
+            />
+          </>
+        )}
       </Container>
-      {matches && (
+      {desktopView && (
         <div className={classes.center}>
           <a
             id="githubLink"
