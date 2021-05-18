@@ -17,7 +17,8 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       padding: "76px 16px 76px 16px !important",
     },
-    background: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
+    backgroundColor: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
+    transition:"background-color 0.3 ease-in-out",
     flexDirection: "column",
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
@@ -89,15 +90,13 @@ export default function Home() {
         >
           Hej, tu Augustyn!
         </Typography>
-        <div data-aos="fade-up" data-aos-delay="1000">
+        <div data-aos="zoom-in" data-aos-delay="1200" data-aos-duration="500" className={classes.flexbox} style={{flexDirection: "column"}}>
           <Typography variant="subtitle1" component="h6">
             Witam Cię na moim portfolio!
           </Typography>
           <Typography variant="subtitle1" component="h6">
             Dowiedz się o mnie więcej, klikając na poniższy przycisk!
           </Typography>
-        </div>
-        <div data-aos="zoom-in" data-aos-delay="2000">
           <MuiButton
             {...{
               component: LinkScroll,
@@ -121,7 +120,7 @@ export default function Home() {
               WIĘCEJ
             </LinkScroll>
           </MuiButton>
-        </div>
+          </div>
       </div>
         <div
           className={classes.svgWrap}

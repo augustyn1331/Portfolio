@@ -43,13 +43,13 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   //Logo img and logo link
   logoImage: {
     boxSizing: "content-box",
-    height: "50px",
+    height: "66px",
     [theme.breakpoints.up("md")]: {
-      height: "60px",
+      height: "76px",
     },
   },
   logoLink: {
-    marginLeft: "4px",
+    marginLeft: "16px",
     cursor: "pointer",
     [theme.breakpoints.up("lg")]: {
       marginLeft: "100px",
@@ -96,14 +96,23 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
     [theme.breakpoints.up("md")]: {
       color: theme.palette.primary.light,
     },
-    "&.active": {
-      borderBottom: "3px solid #f86d70",
+    
+    "&::before": {
+      content: "''",
+      position: "absolute",
+      left: "0",
+      right: "0",
+      bottom: "0",
+      height: "3px",
+      backgroundColor: "#f86d70",
+      transition: "transform 200ms ease-out",
+      transform: "scaleX(0)",
+      transformOrigin:"100% 50%"
     },
-    // transition: "color ease-in-out 0.4s",
-    // "&:hover": {
-    //   color: "#f99fa0",
-    //   transition: "color ease-in-out 0.4s",
-    // },
+    "&.active::before": {
+      transform: "scaleX(1)",
+      transformOrigin:"0% 50%"
+    },
   },
 }));
 

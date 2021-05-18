@@ -33,30 +33,16 @@ const useStyles = makeStyles((theme: Theme) => ({
       margin: "1rem 1.5rem",
       "&::before": {
         content: "''",
-        display: "block",
         position: "absolute",
-        top: "100%",
+        left: "0",
+        right: "0",
+        bottom: "0",
         height: "3px",
-        width: "100%",
-        WebkitTransformOrigin: "center top",
-        transformOrigin: "center top",
-        WebkitTransform: "scale(0, 1)",
-        transform: "scale(0, 1)",
-        transition: [
-          "color 0.1s, -webkit-transform 0.4s ease-in-out",
-          "color 0.1s, transform 0.4s ease-in-out",
-          "color 0.1s, transform 0.4s ease-in-out, -webkit-transform 0.4s ease-in-out",
-        ],
-      },
-      "&::before, &:active::before": {
         backgroundColor: "#f86d70",
+        transition: "transform 300ms ease-in-out",
+        transform: "scaleX(0)"
       },
-      "&:hover::before, &:focus::before": {
-        WebkitTransformOrigin: "center top",
-        transformOrigin: "center top",
-        WebkitTransform: "scale(1, 1)",
-        transform: "scale(1, 1)",
-      },
+      "&:hover::before,\n&:focus::before": { transform: "scaleX(1)" }
     },
   },
   coloredicon: {

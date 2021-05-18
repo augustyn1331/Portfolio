@@ -171,12 +171,6 @@ const theme = createMuiTheme(
           borderWidth: "2px",
           borderStyle: "solid",
           borderColor: "#243344",
-          transition: "border-color ease-in-out 0.4s, color ease-in-out 0.4s, background-color ease-in-out 0.4s",
-          "&:hover": {
-            borderColor: "rgb(23, 93, 175)",
-            color:"rgb(23, 93, 175)",
-            transition: "border-color ease-in-out 0.4s, color ease-in-out 0.4s, background-color ease-in-out 0.4s",
-          },
         },
         label: {
           fontWeight: 300,
