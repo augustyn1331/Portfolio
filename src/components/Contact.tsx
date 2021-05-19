@@ -67,15 +67,19 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
     [theme.breakpoints.up("md")]: {
       maxWidth: "320px",
-      margin: "16px 32px",
+      margin: "36px 16px 0px 16px",
     },
     [theme.breakpoints.up("lg")]: {
       maxWidth: "400px",
-      margin: "16px 64px",
+      margin: "44px 65px 0px 65px",
     },
   },
   svgStyle: {
     width: "100%",
+    [theme.breakpoints.up("md")]: {
+      transform: "translatey(0px)",
+      animation: "floatT 8s ease-in-out infinite",
+    },
   },
   whiteText: {
     color: theme.palette.primary.light,

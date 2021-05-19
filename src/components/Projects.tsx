@@ -54,8 +54,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "0.95rem !important",
   },
   github: {
-    margin: "20px 0px",
-    height: "55px",
+    margin: "30px 0px 0px 0px",
+    height: "45px",
     transition: "transform ease-in-out 0.2s",
     "&:hover": {
       transform: "scale(1.10) translateZ(0)",

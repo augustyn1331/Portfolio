@@ -7,6 +7,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
         margin: "0",
         padding: "0"
       },
+      
     html: {
       fontSize: "19px",
       [theme.breakpoints.up("md")]: {
@@ -23,11 +24,15 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       },
     h1: {
       fontSize: "1.8rem !important",
+      // letterSpacing: "-0.03em",
       [theme.breakpoints.up("sm")]: {
         fontSize: "2.4rem !important",
       },
       [theme.breakpoints.up("lg")]: {
-        fontSize: "3.2rem !important",
+        fontSize: "3.1rem !important",
+      },
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "3.7rem !important",
       },
     },
     h2: {
@@ -36,7 +41,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
         fontSize: "3.2rem !important",
       },
       [theme.breakpoints.up("lg")]: {
-        fontSize: "3.5rem !important",
+        fontSize: "3.8rem !important",
       },
     },
     h3: {
@@ -50,8 +55,14 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
     },
     h6: {
       fontSize: "0.85rem !important",
-      [theme.breakpoints.up("sm")]: {
+      [theme.breakpoints.up("md")]: {
+        fontSize: "0.95rem !important",
+      },
+      [theme.breakpoints.up("lg")]: {
         fontSize: "1rem !important",
+      },
+      [theme.breakpoints.up("xl")]: {
+        fontSize: "1.05rem !important",
       },
     },
     p: {
@@ -60,6 +71,17 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
         fontSize: "1rem !important",
       },
     },
+    "@keyframes floatT": {
+      "0%": {
+        transform: "translatey(0px)"
+      },
+      "50%": {
+        transform: "translatey(-8px)"
+      },
+      "100%": {
+        transform: "translatey(0px)"
+      }
+    }
   },
   loader: {
     display: "flex",

@@ -230,7 +230,7 @@ export default function NavBar() {
   return (
     <AppBar
       data-aos="fade-down"
-      data-aos-delay="200"
+      data-aos-delay="100"
       elevation={mobileView ? 1 : 0}
     >
       {mobileView ? displayMobile() : displayDesktop()}

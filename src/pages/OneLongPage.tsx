@@ -20,9 +20,9 @@ const OneLongPage = ()=>{
     }
     useEffect(() => {
         AOS.init({ once: true,
-            duration: 300,
+            duration: 400,
             disable: isInFbApp(),
-            easing: 'ease-out-quart',
+            easing: 'ease',
           });
       }, []);
     return(

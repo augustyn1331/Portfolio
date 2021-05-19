@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
       padding: "76px 16px 76px 16px !important",
     },
     backgroundColor: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
-    transition:"background-color 0.3 ease-in-out",
+    transition: "background-color 0.3 ease-in-out",
     flexDirection: "column",
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
@@ -32,28 +32,21 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("md")]: {
       maxWidth: "400px",
+      margin: "36px 16px 0px 16px",
     },
     [theme.breakpoints.up("lg")]: {
-      maxWidth: "550px",
-      margin: "16px 65px",
+      maxWidth: "500px",
+      margin: "44px 65px 0px 65px",
     },
   },
   svgStyle: {
     width: "100%",
-  },
-  button: {
-    margin: "0.875rem 0rem 1rem 0rem",
-    padding: "1rem 6px",
-  },
-  buttonRoot: {
-    height: "40px !important",
-    fontSize: "1.2rem",
-    [theme.breakpoints.up("sm")]: {
-      fontSize: "1.3rem",
-      height: "45px !important",
+    [theme.breakpoints.up("md")]: {
+      transform: "translatey(0px)",
+      animation: "floatT 8s ease-in-out infinite",
     },
-    letterSpacing: "-0.03em",
   },
+
   wrapper: {
     flexDirection: "column",
     margin: "76px 0px 12px 0px",
@@ -67,10 +60,47 @@ const useStyles = makeStyles((theme) => ({
       margin: "16px 65px",
     },
   },
+  button: {
+    margin: "1.5rem 0rem 2rem 0rem",
+    [theme.breakpoints.up("md")]: {
+      margin: "3.5rem 0rem 1rem 0rem",
+      transition: "background-color 0.4s ease-in-out",
+      "&:hover": {
+        transition: "background-color 0.4s ease-in-out",
+        // animation: "$grow 1s ease-in-out infinite",
+      },
+    },
+  },
+  buttonText: {
+    letterSpacing: "0.07rem",
+    fontWeight: 600,
+    fontSize: "0.9rem",
+    padding: "9px 23px",
+    [theme.breakpoints.up("lg")]: {
+      padding: "10px 32px",
+      transform: "scale(1)",
+      fontSize: "1.15rem",
+    },
+  },
   emojiicon: {
-    fontSize: "2rem",
+    fontSize: "1.6rem",
+    [theme.breakpoints.up("md")]: {
+      fontSize: "1.8rem",
+    },
     paddingRight: "6px",
   },
+
+  // "@keyframes grow": {
+  //   "0%": {
+  //     transform: "scale(1)",
+  //   },
+  //   "50%": {
+  //     transform: "scale(1.05)",
+  //   },
+  //   "100%": {
+  //     transform: "scale(1)",
+  //   },
+  // },
 }));
 
 export default function Home() {
@@ -86,11 +116,17 @@ export default function Home() {
           variant="h1"
           component="h1"
           data-aos="fade-down"
-          data-aos-delay="200"
+          data-aos-delay="100"
         >
           Hej, tu Augustyn!
         </Typography>
-        <div data-aos="zoom-in" data-aos-delay="1200" data-aos-duration="500" className={classes.flexbox} style={{flexDirection: "column"}}>
+        <div
+          data-aos="fade-down"
+          data-aos-delay="100"
+          data-aos-duration="600"
+          className={classes.flexbox}
+          style={{ flexDirection: "column" }}
+        >
           <Typography variant="subtitle1" component="h6">
             Witam Cię na moim portfolio!
           </Typography>
@@ -101,11 +137,9 @@ export default function Home() {
             {...{
               component: LinkScroll,
             }}
-            variant={"outlined"}
+            variant={"contained"}
+            color={"primary"}
             className={classes.button}
-            classes={{
-              root: classes.buttonRoot,
-            }}
           >
             <LinkScroll
               to={"AboutMe"}
@@ -114,22 +148,22 @@ export default function Home() {
               spy={true}
               offset={-62}
               exact="true"
-              className={classes.flexbox}
+              className={`${classes.buttonText} ${classes.flexbox}`}
             >
               <EmojiPeopleIcon className={classes.emojiicon} />
-              WIĘCEJ
+              Więcej
             </LinkScroll>
           </MuiButton>
-          </div>
-      </div>
-        <div
-          className={classes.svgWrap}
-          data-aos-delay="200"
-          data-aos="fade-down"
-          data-aos-anchor-placement="top-bottom"
-        >
-          <img className={classes.svgStyle} src={Svg} alt="car" />
         </div>
+      </div>
+      <div
+        className={classes.svgWrap}
+        data-aos-delay="100"
+        data-aos="fade-down"
+        data-aos-anchor-placement="top-bottom"
+      >
+        <img className={classes.svgStyle} src={Svg} alt="car" />
+      </div>
     </Container>
   );
 }

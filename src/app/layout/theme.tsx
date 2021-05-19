@@ -32,19 +32,19 @@ const theme = createMuiTheme(
       },
       MuiTypography: {
         h1: {
-          fontWeight: 600,
+          fontWeight: 700,
           textAlign: "center",
           padding: "0rem",
-          margin: "1.5rem 1rem 1.5rem 1rem",
-          letterSpacing: "-0.03em",
-          lineHeight: "1.20",
+          margin: "1.5rem 1rem 1.75rem 1rem",
+          lineHeight: "1.1em",
+          letterSpacing: "-0.02em",
         },
         h2: {
           fontWeight: 600,
           textAlign: "center",
           padding: "0rem",
-          margin: "1.5rem 1rem 1.5rem 1rem",
-          letterSpacing: "-0.03em",
+          margin: "1rem 1rem 2.5rem 1rem",
+          letterSpacing: "-0.01em",
         },
         h3: {
           fontWeight: 500,
@@ -65,13 +65,13 @@ const theme = createMuiTheme(
           fontWeight: 400,
           textAlign: "left",
         },
-        body2:{
+        body2: {
           color: "#45435f",
           fontWeight: 300,
           textAlign: "center",
           letterSpacing: "-0.01em",
           lineHeight: "1.4",
-        }
+        },
       },
       MuiListItemIcon: {
         root: {
@@ -95,11 +95,6 @@ const theme = createMuiTheme(
       MuiDialogActions: {
         root: {
           backgroundColor: "white",
-        },
-      },
-      MuiButtonBase: {
-        root: {
-          height: "76px",
         },
       },
       MuiOutlinedInput: {
@@ -153,16 +148,19 @@ const theme = createMuiTheme(
       MuiContainer: {
         root: {
           padding: "0px",
-          paddingLeft:"0px",
-          paddingRight:"0px"
+          paddingLeft: "0px",
+          paddingRight: "0px",
         },
       },
-      MuiTouchRipple:{
-        rippleVisible:{
+      MuiTouchRipple: {
+        rippleVisible: {
           // color:"rgba(23, 93, 175, 0.5)",
-        }
+        },
       },
       MuiButton: {
+        root: {
+          padding: "0px",
+        },
         startIcon: {
           marginRight: "4px",
         },
@@ -171,6 +169,10 @@ const theme = createMuiTheme(
           borderWidth: "2px",
           borderStyle: "solid",
           borderColor: "#243344",
+        },
+        contained: {
+          borderRadius: "4px",
+          boxShadow: "2px 2px 7px 0 rgba(0,0,0,.25)",
         },
         label: {
           fontWeight: 300,

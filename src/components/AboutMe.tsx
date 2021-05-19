@@ -1,4 +1,3 @@
-
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import photo from "../img/photosquare.jpg";
@@ -20,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     overflowX: "hidden",
     [theme.breakpoints.up("md")]: {
       padding: "0px 16px 76px 16px !important",
-      overflowX:"visible"
+      overflowX: "visible",
     },
   },
   photo: {
@@ -28,16 +27,10 @@ const useStyles = makeStyles((theme) => ({
     margin: "60px 45px 20px 45px",
     borderRadius: "50%",
     boxShadow: "0 1px 3px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.10)",
-    transition: "transform ease-in-out 0.3s",
     [theme.breakpoints.up("sm")]: {
       height: "200px",
     },
     [theme.breakpoints.up("md")]: {
-      "&:hover": {
-        transform: "scale(1.15) translateZ(0)",
-        transition: "transform ease-in-out 0.3s",
-      },
-      willChange: "transform",
       cursor: "pointer",
       height: "250px",
     },
@@ -63,10 +56,7 @@ export default function AboutMe() {
       maxWidth="xl"
     >
       <Container className={classes.flexbox} maxWidth="xl">
-        <div
-          data-aos="zoom-in"
-          data-aos-delay="1000"
-        >
+        <div data-aos="zoom-in" data-aos-delay="1000">
           <img id="myphoto" className={classes.photo} src={photo} alt="AG" />
         </div>
 
