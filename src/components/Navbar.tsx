@@ -43,9 +43,9 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   //Logo img and logo link
   logoImage: {
     boxSizing: "content-box",
-    height: "66px",
+    height: "60px",
     [theme.breakpoints.up("md")]: {
-      height: "76px",
+      height: "70px",
     },
   },
   logoLink: {
@@ -66,8 +66,8 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
     height: "62px !important",
   },
   menuIcon: {
-    color: "#f4f7fa",
-    height: "47px",
+    color: "rgba(244, 247, 250, 0.95)",
+    height: "45px",
   },
   //Menu links
   navUl: {

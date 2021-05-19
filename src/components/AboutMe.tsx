@@ -17,8 +17,10 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "100vh",
     background: theme.palette.primary.main,
     padding: "0px 16px 32px 16px !important",
+    overflowX: "hidden",
     [theme.breakpoints.up("md")]: {
       padding: "0px 16px 76px 16px !important",
+      overflowX:"visible"
     },
   },
   photo: {
