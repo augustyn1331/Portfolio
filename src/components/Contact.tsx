@@ -1,11 +1,10 @@
-
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import CallOutlinedIcon from "@material-ui/icons/CallOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import Svg from "../img/mobiletesting.svg";
+
 const useStyles = makeStyles((theme: Theme) => ({
   flexbox: {
     display: "flex",
@@ -16,12 +15,35 @@ const useStyles = makeStyles((theme: Theme) => ({
   root: {
     minHeight: "100vh",
     background: theme.palette.primary.main,
-    padding: "0px 16px 0px 16px !important",
-    [theme.breakpoints.up("md")]: {
-      padding: "0px 16px 76px 16px !important",
+    padding: "0px 16px 76px 16px !important",
+  },  
+  linksWrapper: {
+    margin: "32px 16px",
+    [theme.breakpoints.up("lg")]: {
+      margin: "16px 64px",
     },
   },
-  contactLinks: {
+  outsideWrapper: {
+    margin: "16px 0px 8px 0px",
+    [theme.breakpoints.up("sm")]: {
+      flexDirection: "row",
+    },
+  },
+  title: {
+    color: theme.palette.primary.light,
+    [theme.breakpoints.down("md")]: {
+      margin: "1.5rem 1rem 0rem 1rem",
+    },
+  },
+  linkText: {
+    fontSize: "0.9rem !important",
+    color: theme.palette.primary.light,
+    fontWeight: 400,
+    [theme.breakpoints.up("md")]: {
+      fontSize: "1.2rem !important",
+    },
+  },
+  linkTextAnimation: {
     position: "relative",
     display: "flex",
     justifyContent: "center",
@@ -38,26 +60,20 @@ const useStyles = makeStyles((theme: Theme) => ({
         right: "0",
         bottom: "0",
         height: "3px",
-        backgroundColor: "#f86d70",
+        backgroundColor: theme.palette.secondary.dark,
         transition: "transform 300ms ease-in-out",
-        transform: "scaleX(0)"
+        transform: "scaleX(0)",
       },
-      "&:hover::before,\n&:focus::before": { transform: "scaleX(1)" }
+      "&:hover::before,\n&:focus::before": { transform: "scaleX(1)" },
     },
   },
-  coloredicon: {
+  icon: {
     fontSize: "2.3rem !important",
     [theme.breakpoints.up("md")]: {
-      fontSize: "3rem !important",
+      fontSize: "2.8rem !important",
     },
     paddingRight: "16px",
     color: theme.palette.primary.light,
-  },
-  textSize: {
-    fontSize: "0.9rem !important",
-    [theme.breakpoints.up("md")]: {
-      fontSize: "1.2rem !important",
-    },
   },
   svgWrap: {
     maxWidth: "200px",
@@ -81,42 +97,15 @@ const useStyles = makeStyles((theme: Theme) => ({
       animation: "floatT 8s ease-in-out infinite",
     },
   },
-  whiteText: {
-    color: theme.palette.primary.light,
-  },
-  linksWrapper: {
-    margin: "32px",
-    [theme.breakpoints.up("lg")]: {
-      margin: "16px 64px",
-    },
-  },
-  outsideWrapper: {
-    margin: "16px 0px 8px 0px",
-    [theme.breakpoints.up("sm")]: {
-      flexDirection: "row",
-    },
-  },
-  noMargin: {
-    [theme.breakpoints.down("md")]: {
-      margin: "1.5rem 1rem 0rem 1rem",
-    },
-  },
+
 }));
 
 export default function Contact() {
   const classes = useStyles();
   return (
-    <Container
-      className={`${classes.root} ${classes.flexbox}`}
-      id="Contact"
-      maxWidth="xl"
-    >
+    <div className={`${classes.root} ${classes.flexbox}`} id="Contact">
       <div className={classes.flexbox}>
-        <Typography
-          className={`${classes.whiteText} ${classes.noMargin}`}
-          variant="h2"
-          component="h2"
-        >
+        <Typography className={`${classes.title}`} variant="h2" component="h2">
           Kontakt
         </Typography>
       </div>
@@ -124,7 +113,7 @@ export default function Contact() {
         <div className={`${classes.linksWrapper} ${classes.flexbox}`}>
           <a
             id="contactLinkPhone"
-            className={classes.contactLinks}
+            className={classes.linkTextAnimation}
             href="tel:790605945"
             target="_blank"
             rel="noreferrer"
@@ -132,17 +121,12 @@ export default function Contact() {
             data-aos-easing="ease-out"
             data-aos-delay="500"
           >
-            <CallOutlinedIcon className={classes.coloredicon} />
-            <Typography
-              className={`${classes.whiteText} ${classes.textSize}`}
-              component="p"
-            >
-              790 605 945
-            </Typography>
+            <CallOutlinedIcon className={classes.icon} />
+            <Typography className={classes.linkText}>790 605 945</Typography>
           </a>
           <a
             id="contactLinkEmail"
-            className={classes.contactLinks}
+            className={classes.linkTextAnimation}
             href="mailto:augustyn1331@gmail.com"
             target="_blank"
             rel="noreferrer"
@@ -150,17 +134,14 @@ export default function Contact() {
             data-aos-easing="ease-out"
             data-aos-delay="1000"
           >
-            <EmailOutlinedIcon className={classes.coloredicon} />
-            <Typography
-              className={`${classes.whiteText} ${classes.textSize}`}
-              component="p"
-            >
+            <EmailOutlinedIcon className={classes.icon} />
+            <Typography className={classes.linkText}>
               augustyn1331@gmail.com
             </Typography>
           </a>
           <a
             id="contactLinkChat"
-            className={classes.contactLinks}
+            className={classes.linkTextAnimation}
             href="https://www.m.me/duzyofiszjal"
             target="_blank"
             rel="noreferrer"
@@ -168,19 +149,14 @@ export default function Contact() {
             data-aos-easing="ease-out"
             data-aos-delay="1500"
           >
-            <ChatOutlinedIcon className={classes.coloredicon} />
-            <Typography
-              className={`${classes.whiteText} ${classes.textSize}`}
-              component="p"
-            >
-              Messenger
-            </Typography>
+            <ChatOutlinedIcon className={classes.icon} />
+            <Typography className={classes.linkText}>messenger</Typography>
           </a>
         </div>
         <div className={classes.svgWrap}>
-          <img className={classes.svgStyle} src={Svg} alt="car" />
+          <img className={classes.svgStyle} src={Svg} alt="" />
         </div>
       </div>
-    </Container>
+    </div>
   );
 }

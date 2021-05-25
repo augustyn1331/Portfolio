@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import { default as MuiButton } from "@material-ui/core/Button";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
@@ -17,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       padding: "76px 16px 76px 16px !important",
     },
-    backgroundColor: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
+    backgroundColor: "linear-gradient(#fafbfd,#fff,#fff)",
     transition: "background-color 0.3 ease-in-out",
     flexDirection: "column",
     [theme.breakpoints.up("md")]: {
@@ -64,11 +63,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "1.5rem 0rem 2rem 0rem",
     [theme.breakpoints.up("md")]: {
       margin: "3.5rem 0rem 1rem 0rem",
-      transition: "background-color 0.4s ease-in-out",
-      "&:hover": {
-        transition: "background-color 0.4s ease-in-out",
-        // animation: "$grow 1s ease-in-out infinite",
-      },
     },
   },
   buttonText: {
@@ -78,7 +72,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "9px 23px",
     [theme.breakpoints.up("lg")]: {
       padding: "10px 32px",
-      transform: "scale(1)",
       fontSize: "1.15rem",
     },
   },
@@ -89,50 +82,44 @@ const useStyles = makeStyles((theme) => ({
     },
     paddingRight: "6px",
   },
-
-  // "@keyframes grow": {
-  //   "0%": {
-  //     transform: "scale(1)",
-  //   },
-  //   "50%": {
-  //     transform: "scale(1.05)",
-  //   },
-  //   "100%": {
-  //     transform: "scale(1)",
-  //   },
-  // },
+  subTitle: {
+    fontSize: "0.85rem !important",
+    [theme.breakpoints.up("md")]: {
+      fontSize: "0.95rem !important",
+    },
+    [theme.breakpoints.up("lg")]: {
+      fontSize: "1rem !important",
+    },
+    [theme.breakpoints.up("xl")]: {
+      fontSize: "1.05rem !important",
+    },
+  },
 }));
 
 export default function Home() {
   const classes = useStyles();
   return (
-    <Container
-      className={`${classes.root} ${classes.flexbox}`}
-      maxWidth="xl"
-      id="Home"
-    >
+    <div className={`${classes.root} ${classes.flexbox}`} id="Home">
       <div className={`${classes.wrapper} ${classes.flexbox}`}>
-        <Typography
-          variant="h1"
-          component="h1"
-          data-aos="fade-down"
-          data-aos-delay="100"
-        >
+        <h1 data-aos="fade-down" data-aos-delay="100">
           Hej, tu Augustyn!
-        </Typography>
+        </h1>
         <div
-          data-aos="fade-down"
-          data-aos-delay="100"
-          data-aos-duration="600"
           className={classes.flexbox}
           style={{ flexDirection: "column" }}
         >
-          <Typography variant="subtitle1" component="h6">
+          <div data-aos="fade-down"
+          data-aos-delay="100"
+          data-aos-duration="600">
+            
+          <Typography variant="subtitle1" className={classes.subTitle}>
             Witam Cię na moim portfolio!
           </Typography>
-          <Typography variant="subtitle1" component="h6">
+          <Typography variant="subtitle1" className={classes.subTitle}>
             Dowiedz się o mnie więcej, klikając na poniższy przycisk!
           </Typography>
+          </div>
+
           <MuiButton
             {...{
               component: LinkScroll,
@@ -140,13 +127,16 @@ export default function Home() {
             variant={"contained"}
             color={"primary"}
             className={classes.button}
+            data-aos="fade-down"
+            data-aos-delay="100"
+            data-aos-duration="700"
           >
             <LinkScroll
               to={"AboutMe"}
               smooth={true}
               duration={500}
               spy={true}
-              offset={-62}
+              offset={-20}
               exact="true"
               className={`${classes.buttonText} ${classes.flexbox}`}
             >
@@ -164,6 +154,6 @@ export default function Home() {
       >
         <img className={classes.svgStyle} src={Svg} alt="car" />
       </div>
-    </Container>
+    </div>
   );
 }

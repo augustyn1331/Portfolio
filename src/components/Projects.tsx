@@ -1,8 +1,7 @@
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import ImageCard from "./ImageCard";
+import ImageCard from "./cards/ImageCard";
 import add from "../img/add.png";
 import actions from "../img/actions.png";
-import Container from "@material-ui/core/Container";
 import SvgGitHubLogo from "../img/GitHubLogo";
 import Typography from "@material-ui/core/Typography";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
@@ -15,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
   },
   root: {
     minHeight: "100vh",
-    background: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
-    padding: "0px 16px 76px 16px !important",
+    background: "linear-gradient(#fafbfd,#fff,#fff,#fff)",
+    padding: "32px 16px 76px 16px !important",
     [theme.breakpoints.up("md")]: {
       padding: "0px 16px 76px 16px !important",
     },
@@ -28,6 +27,9 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("lg")]: {
       flexDirection: "row",
     },
+  }, 
+  title: {
+    margin: "0px 16px 24px 16px",
   },
   card: {
     maxWidth: 250,
@@ -35,23 +37,27 @@ const useStyles = makeStyles((theme) => ({
     margin: "16px 24px 24px 24px",
     display: "flex",
     flexDirection: "column",
+    transform: "scale(1) translateZ(0)",
+    willChange: "transform",
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
       maxWidth: 460,
+      "&:hover": {
+        transform: "scale(1.05) translateZ(0)",
+      },
     },
     transition: "transform 0.15s ease-in-out",
     cursor: "pointer",
   },
-  title: {
-    [theme.breakpoints.up("md")]: {
-      marginBottom: "1rem",
-    },
+  cardTitle: {
+    marginBottom: "1rem",
   },
-  desc: {
+  cardDescription: {
+    fontSize: "0.85rem !important",
     [theme.breakpoints.up("md")]: {
       marginTop: "1rem",
+      fontSize: "0.95rem !important",
     },
-    fontSize: "0.95rem !important",
   },
   github: {
     margin: "30px 0px 0px 0px",
@@ -63,15 +69,6 @@ const useStyles = makeStyles((theme) => ({
     },
     willChange: "transform",
     cursor: "pointer",
-  },
-  center: {
-    margin: "32px 0px 0px 0px",
-    [theme.breakpoints.up("md")]: {
-      margin: "16px 40px 16px 40px",
-    },
-    [theme.breakpoints.up("lg")]: {
-      margin: "0px 65px 24px 65px",
-    },
   },
 }));
 
@@ -85,48 +82,39 @@ export default function Projects() {
       description:
         "Formularz dodawania faktury w projekcie interfejsu aplikacji webowej.",
       imageUrl: add,
-      time: 1500,
     },
     {
       title: "Panel użytkownika",
       description:
         "Lista faktur i opcje do wyboru dla danej pozycji w projekcie interfejsu aplikacji webowej.",
       imageUrl: actions,
-      time: 1500,
     },
   ];
 
   return (
-    <Container
-      className={`${classes.root} ${classes.flexbox}`}
-      maxWidth="xl"
-      id="Projects"
-    >
-      <div className={classes.center}>
+    <div className={`${classes.root} ${classes.flexbox}`} id="Projects">
+      <div className={classes.title}>
         <Typography variant="h2" component="h2">
           Projekty
         </Typography>
       </div>
-      <Container
-        className={`${classes.wrapper} ${classes.flexbox}`}
-        maxWidth="xl"
-      >
+      <div className={`${classes.wrapper} ${classes.flexbox}`}>
         {desktopView ? (
           <>
             <div data-aos="fade-right" data-aos-delay="1000">
               <ImageCard
                 place={places[1]}
                 card={classes.card}
-                title={classes.title}
-                desc={classes.desc}
+                title={classes.cardTitle}
+                desc={classes.cardDescription}
               />
             </div>
             <div data-aos="fade-left" data-aos-delay="500">
               <ImageCard
                 place={places[0]}
                 card={classes.card}
-                title={classes.title}
-                desc={classes.desc}
+                title={classes.cardTitle}
+                desc={classes.cardDescription}
               />
             </div>{" "}
           </>
@@ -135,20 +123,20 @@ export default function Projects() {
             <ImageCard
               place={places[1]}
               card={classes.card}
-              title={classes.title}
-              desc={classes.desc}
+              title={classes.cardTitle}
+              desc={classes.cardDescription}
             />
             <ImageCard
               place={places[0]}
               card={classes.card}
-              title={classes.title}
-              desc={classes.desc}
+              title={classes.cardTitle}
+              desc={classes.cardDescription}
             />
           </>
         )}
-      </Container>
+      </div>
       {desktopView && (
-        <div className={classes.center}>
+        <div>
           <a
             id="githubLink"
             href="https://github.com/augustyn1331/"
@@ -159,6 +147,6 @@ export default function Projects() {
           </a>
         </div>
       )}
-    </Container>
+    </div>
   );
 }

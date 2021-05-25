@@ -2,10 +2,9 @@ import { AppBar, Toolbar, IconButton, Drawer } from "@material-ui/core";
 import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import React, { useState } from "react";
 import { Link as LinkScroll } from "react-scroll";
-import logo from "../img/logo.png";
-import menuicon from "../img/menu_outlined_icon.svg";
+import logo from "../../img/logo.png";
+import menuicon from "../../img/menu_outlined_icon.svg";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-
 const headersData = [
   {
     label: "O MNIE",
@@ -20,7 +19,6 @@ const headersData = [
     href: "Contact",
   },
 ];
-
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
   flexbox: {
     display: "flex",
@@ -30,7 +28,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   //Containers
   drawer: {
     zIndex: 2,
-    background: "linear-gradient(#f4f7fa,#fff,#fff,#fff,#fff)",
+    background: "linear-gradient(#f7f9fb,#fff,#fff,#fff,#fff)",
   },
   toolbar: {
     justifyContent: "space-between",
@@ -42,38 +40,32 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   },
   //Logo img and logo link
   logoImage: {
-    boxSizing: "content-box",
-    height: "60px",
+    height: "30px",
     [theme.breakpoints.up("md")]: {
-      height: "70px",
+      height: "41px",
     },
   },
   logoLink: {
     marginLeft: "16px",
+    height: "56px",
     cursor: "pointer",
     [theme.breakpoints.up("lg")]: {
       marginLeft: "100px",
     },
-    [theme.breakpoints.down("sm")]: {
-      height: "62px !important",
-    },
   },
   //Menu button
   menuButton: {
-    width: "50px",
     padding: "0px 8px",
-    boxSizing: "content-box",
-    height: "62px !important",
+    height: "56px",
   },
   menuIcon: {
     color: "rgba(244, 247, 250, 0.95)",
-    height: "45px",
+    height: "42px",
   },
   //Menu links
   navUl: {
     marginTop: "0px",
     flexDirection: "row",
-    marginRight: "0rem",
     [theme.breakpoints.up("lg")]: {
       marginRight: "64px",
     },
@@ -82,6 +74,13 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   navList: {
     height: "76px",
     margin: "0rem 1rem",
+    //selectors for having different hover color based on location without need to use javascript
+    // "& #AboutMeLink::before": {
+    //   backgroundColor: theme.palette.secondary.light,
+    // },
+    // "& #ProjectsLink::before": {
+    //   backgroundColor: theme.palette.secondary.main,
+    // },
   },
   navLink: {
     position: "relative",
@@ -104,11 +103,12 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       right: "0",
       bottom: "0",
       height: "3px",
-      backgroundColor: "#f86d70",
       transition: "transform 200ms ease-out",
       transform: "scaleX(0)",
-      transformOrigin:"100% 50%"
+      transformOrigin:"100% 50%",
+      backgroundColor:theme.palette.secondary.dark,
     },
+    
     "&.active::before": {
       transform: "scaleX(1)",
       transformOrigin:"0% 50%"
@@ -126,6 +126,9 @@ export default function NavBar() {
   const handleDrawerOpen = () => setDrawerOpen(true);
   const handleDrawerClose = () => setDrawerOpen(false);
   const classes = useStyles();
+
+
+
   /* Display desktop Navbar */
   const displayDesktop = () => {
     return (
@@ -182,7 +185,7 @@ export default function NavBar() {
     return headersData.map(({ label, href }) => {
       return (
         <li
-          key ={label}
+          key = {label}
           className={classes.navList}
       >
           <LinkScroll
@@ -190,7 +193,7 @@ export default function NavBar() {
             smooth={true}
             duration={500}
             spy={true}
-            offset={-61} //different offset for mobile nav
+            offset={-55} //different offset for mobile nav
             exact="true"
             className={`${classes.navLink} ${classes.flexbox}`}
             onClick={handleDrawerClose}
@@ -207,10 +210,11 @@ export default function NavBar() {
     return headersData.map(({ label, href }) => {
       return (
         <li
-          key ={label}
+          key = {label}
           className={classes.navList}
       >
         <LinkScroll
+        id={href+"Link"}
                 to={href}
                 smooth={true}
                 duration={500}

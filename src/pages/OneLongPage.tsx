@@ -5,7 +5,7 @@ import Home from "../components/Home"
 import Projects from "../components/Projects"
 import AOS from "aos";
 import "aos/dist/aos.css";
-import NavBar from "../components/Navbar"
+import NavBar from "../components/navbar/Navbar"
 
 declare global {
     interface Window {

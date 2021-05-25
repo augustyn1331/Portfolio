@@ -1,16 +1,16 @@
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import photo from "../img/photosquare.jpg";
 import Typography from "@material-ui/core/Typography";
+import SvgsCard from "./cards/SvgsCard";
+import rwd from "../img/rwd_dev.svg";
+import mobile from "../img/mobile_dev.svg";
+
 const useStyles = makeStyles((theme) => ({
   flexbox: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "column",
-    [theme.breakpoints.up("md")]: {
-      flexDirection: "row",
-    },
   },
   root: {
     minHeight: "100vh",
@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "0px 16px 32px 16px !important",
     overflowX: "hidden",
     [theme.breakpoints.up("md")]: {
-      padding: "0px 16px 76px 16px !important",
+      padding: "76px 16px 0px 16px !important",
       overflowX: "visible",
     },
   },
@@ -26,23 +26,47 @@ const useStyles = makeStyles((theme) => ({
     height: "110px",
     margin: "60px 45px 20px 45px",
     borderRadius: "50%",
-    boxShadow: "0 1px 3px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.10)",
+    boxShadow: "0 1px 3px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.10)",
     [theme.breakpoints.up("sm")]: {
       height: "200px",
     },
     [theme.breakpoints.up("md")]: {
-      cursor: "pointer",
-      height: "250px",
+      height: "230px",
+      margin: "60px 45px 300px 45px",
+      transition: "transform ease-in-out 0.3s",
+      "&:hover": {
+        transform: "scale(1.05) translateZ(0)",
+        transition: "transform ease-in-out 0.3s",
+      },
     },
     [theme.breakpoints.up("lg")]: {
-      height: "300px",
-      margin: "20px 45px 20px 35px",
+      height: "270px",
+      margin: "0px 50px 300px 35px",
     },
   },
   textWrapper: {
+    maxWidth: "778px",
     margin: "8px 0px 60px 0px",
     [theme.breakpoints.up("md")]: {
-      margin: "35px 35px 35px 45px",
+      margin: "35px 35px 35px 50px",
+    },
+  },
+  cardWrapper: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+    [theme.breakpoints.up("sm")]: {
+      flexDirection: "row",
+    },
+    [theme.breakpoints.up("lg")]: {
+      marginLeft: "-50px",
+    },
+  },
+  imageWrapper: {
+    maxWidth: "1245px",
+    [theme.breakpoints.up("md")]: {
+      flexDirection: "row",
     },
   },
 }));
@@ -50,48 +74,38 @@ const useStyles = makeStyles((theme) => ({
 export default function AboutMe() {
   const classes = useStyles();
   return (
-    <Container
-      className={`${classes.root} ${classes.flexbox}`}
-      id="AboutMe"
-      maxWidth="xl"
-    >
-      <Container className={classes.flexbox} maxWidth="xl">
-        <div data-aos="zoom-in" data-aos-delay="1000">
+    <div className={`${classes.root} ${classes.flexbox}`} id="AboutMe">
+      <div className={`${classes.flexbox} ${classes.imageWrapper}`}>
+        <div data-aos="fade-down" data-aos-delay="500">
           <img id="myphoto" className={classes.photo} src={photo} alt="AG" />
         </div>
-
-        <Container
-          className={`${classes.textWrapper} ${classes.flexbox}`}
-          maxWidth="md"
-        >
+        <div className={`${classes.textWrapper} ${classes.flexbox}`}>
           <Typography
             variant="body1"
             component="p"
-            data-aos="fade-left"
-            data-aos-delay="500"
+            data-aos="fade-down" data-aos-delay="500"
           >
             &emsp;Nazywam się Augustyn Głowacki i jestem studentem III roku
             informatyki na Politechnice Częstochowskiej, specjalizacja
-            Programowanie Aplikacji Internetowych. Znam język angielski na
-            poziomie C1.
-            <br />
-            &emsp;Od połowy 2020 roku stwierdziłem, że wezmę sprawy w swoje ręce
-            i zacznę się uczyć front-endu we własnym zakresie. Po krótkim czasie
-            stało się to moim hobby. Staram się codziennie poszerzać horyzonty w
-            zakresie tworzenia UI/UX.
-            <br />
-            &emsp;W moich projektach używam biblioteki React.js, korzystam także
-            z frameworka Material UI. Planuję w najbliższym czasie rozpocząć
-            również naukę React Native, aby oprócz stron internetowych tworzyć
-            również aplikacje mobilne &#129488;
-            <br />
-            &emsp;Poza programowaniem, moim hobby jest oglądanie meczów Bayernu
-            Monachium. Uwielbiam także oglądać wyścigi Formuły 1 oraz urywki
-            programu Top Gear. Moje ulubione seriale to "Parks and Recreation"
-            oraz "The Office".
+            Programowanie Aplikacji Internetowych. We własnym zakresie rozwijam
+            swoje umiejętności, aby zostać programistą, a konkretniej Front-end
+            Developerem. Moje pomysły realizuję używając biblioteki React.js
+            oraz React Native. Na co dzień projektuję:
           </Typography>
-        </Container>
-      </Container>
-    </Container>
+          <div className={classes.cardWrapper} data-aos="fade-down" data-aos-delay="500" data-aos-duration="600">
+            <SvgsCard
+              title="Strony Internetowe"
+              imageUrl={rwd}
+              description="W każdym projekcie dbam o responsywność strony, aby wyglądała tak samo dobrze na telefonie, tablecie oraz komputerze."
+            ></SvgsCard>
+            <SvgsCard
+              title="Aplikacje mobilne"
+              imageUrl={mobile}
+              description="Dzięki React Native mogę stworzyć aplikację działającą zarówno na systemie Android i iOS."
+            ></SvgsCard>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
