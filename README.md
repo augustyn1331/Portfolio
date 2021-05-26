@@ -1,8 +1,10 @@
+<br>
 <p align="center">
-  <b>Zapraszam do odwiedzenia mojej strony wizytówki. W zasadzie strona ta jest sama w sobie projektem do portfolio, jako, że narazie jeszcze nie mam co wstawić w sekcji projekty &#129306;</b><br>
+   <b>Serdecznie zapraszam do odwiedzenia mojej strony wizytówki. <br> Jest ona sama w sobie również projektem do mojego portfolio. &#129306;</b><br>
 </p>
 
-![Portfolio](https://i.ibb.co/6nsj25C/Zrzut-ekranu-z-2021-05-17-o-21-39-56.png)
+![Portfolio](https://i.imgur.com/sw10FN2.png)
+
 
 # Getting Started with Create React App
 

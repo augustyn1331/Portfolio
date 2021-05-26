@@ -7,16 +7,16 @@
   <meta name="description" content="Augustyn Głowacki - Junior Frontend Developer Portfolio" />
   <title>Portfolio</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet"> 
-<link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/favicon/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon/favicon-16x16.png">
-<link rel="manifest" href="%PUBLIC_URL%/favicon/site.webmanifest">
-<link rel="mask-icon" href="%PUBLIC_URL%/favicon/safari-pinned-tab.svg" color="#175daf">
-<link rel="shortcut icon" href="%PUBLIC_URL%/favicon/favicon.ico">
-<meta name="msapplication-TileColor" content="#fafbfd">
-<meta name="msapplication-config" content="%PUBLIC_URL%/favicon/browserconfig.xml">
-<meta name="theme-color" content="#fafbfd">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon/favicon-16x16.png">
+  <link rel="manifest" href="%PUBLIC_URL%/favicon/site.webmanifest">
+  <link rel="mask-icon" href="%PUBLIC_URL%/favicon/safari-pinned-tab.svg" color="#175daf">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#fafbfd">
+  <meta name="msapplication-config" content="%PUBLIC_URL%/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#fafbfd">
   <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -43,23 +43,22 @@
     // When the single page app is loaded further down in this file,
     // the correct url will be waiting in the browser's history for
     // the single page app to route accordingly.
-    (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
+    (function (l) {
+      if (l.search[1] === '/') {
+        var decoded = l.search.slice(1).split('&').map(function (s) {
+          return s.replace(/~and~/g, '&')
+        }).join('?');
+        window.history.replaceState(null, null,
+          l.pathname.slice(0, -1) + decoded + l.hash
+        );
+      }
+    }(window.location))
+  </script>
 
   <style>
     body {
       background: #fafbfd,
     }
-
     .svg1 {
       animation: rotate 1.5s linear infinite;
       -webkit-animation: rotate 1.5s linear infinite;
@@ -67,7 +66,6 @@
       height: 100px;
       margin-top: 5rem;
     }
-
     .div1 {
       width: 100vw;
       height: 100vh;
@@ -76,44 +74,37 @@
       justify-content: flex-start;
       flex-direction: column;
     }
-
     .sdot {
       width: 274px;
       height: 274px;
       position: relative;
       top: 0;
     }
-
     @keyframes rotate {
       to {
         transform: rotate(360deg);
       }
     }
-
     @-webkit-keyframes rotate {
       to {
         -webkit-transform: rotate(360deg);
       }
     }
-
     @-moz-keyframes rotate {
       to {
         transform: rotate(360deg);
       }
     }
-
     .path {
       stroke-dashoffset: 20;
       stroke-dasharray: 170;
     }
-
     .ico {
       margin-top: 8rem;
       width: 200px;
     }
   </style>
 </head>
-
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root">
@@ -131,8 +122,7 @@
       </svg>
     </div> -->
   </div>
-   <!-- single page app in bundle.js -->
-   <script src="/Portfolio/build/bundle.js"></script>
+  <!-- single page app in bundle.js -->
+  <script src="/Portfolio/build/bundle.js"></script>
 </body>
-
 </html>

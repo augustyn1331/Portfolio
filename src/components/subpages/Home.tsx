@@ -1,9 +1,10 @@
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { default as MuiButton } from "@material-ui/core/Button";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
-import Svg from "../img/startup.svg";
+import Svg from "../../img/startup.svg";
 import { Link as LinkScroll } from "react-scroll";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 const useStyles = makeStyles((theme) => ({
   flexbox: {
     display: "flex",
@@ -11,15 +12,12 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
   },
   root: {
+    flexDirection: "column",
     minHeight: "100vh",
     padding: "0px 16px 32px 16px !important",
+    background: "linear-gradient(#fafbfd,#fff,#fff,#fff)",
     [theme.breakpoints.up("md")]: {
       padding: "76px 16px 76px 16px !important",
-    },
-    backgroundColor: "linear-gradient(#fafbfd,#fff,#fff)",
-    transition: "background-color 0.3 ease-in-out",
-    flexDirection: "column",
-    [theme.breakpoints.up("md")]: {
       flexDirection: "row",
     },
   },
@@ -31,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.up("md")]: {
       maxWidth: "400px",
-      margin: "36px 16px 0px 16px",
+      margin: "44px 16px 0px 16px",
     },
     [theme.breakpoints.up("lg")]: {
       maxWidth: "500px",
-      margin: "44px 65px 0px 65px",
+      margin: "52px 65px 0px 65px",
     },
   },
   svgStyle: {
@@ -61,6 +59,8 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     margin: "1.5rem 0rem 2rem 0rem",
+    padding: "0px",
+    boxShadow: "2px 2px 7px 0 rgba(0,0,0,.25)",
     [theme.breakpoints.up("md")]: {
       margin: "3.5rem 0rem 1rem 0rem",
     },
@@ -83,6 +83,11 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: "6px",
   },
   subTitle: {
+    color: "#5c6573",
+    fontWeight: 400,
+    textAlign: "center",
+    padding: "3px 16px 3px 16px",
+    letterSpacing: "-0.01em",
     fontSize: "0.85rem !important",
     [theme.breakpoints.up("md")]: {
       fontSize: "0.95rem !important",
@@ -94,10 +99,17 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.05rem !important",
     },
   },
+  flexColumn: {
+    flexDirection: "column",
+  },
 }));
 
 export default function Home() {
   const classes = useStyles();
+  const theme = useTheme();
+  //returns true if window width is above 960px
+  const desktopView = useMediaQuery(theme.breakpoints.up("md"));
+  
   return (
     <div className={`${classes.root} ${classes.flexbox}`} id="Home">
       <div className={`${classes.wrapper} ${classes.flexbox}`}>
@@ -105,31 +117,24 @@ export default function Home() {
           Hej, tu Augustyn!
         </h1>
         <div
-          className={classes.flexbox}
-          style={{ flexDirection: "column" }}
-        >
-          <div data-aos="fade-down"
+          className={`${classes.flexColumn} ${classes.flexbox}`}
+          data-aos="fade-down"
           data-aos-delay="100"
-          data-aos-duration="600">
-            
-          <Typography variant="subtitle1" className={classes.subTitle}>
-            Witam Cię na moim portfolio!
-          </Typography>
-          <Typography variant="subtitle1" className={classes.subTitle}>
+          data-aos-duration="500"
+        >
+          <p className={classes.subTitle}>Witam Cię na moim portfolio!</p>
+          <p className={classes.subTitle}>
             Dowiedz się o mnie więcej, klikając na poniższy przycisk!
-          </Typography>
-          </div>
+          </p>
 
           <MuiButton
+            //button with a link to about me page
             {...{
               component: LinkScroll,
             }}
             variant={"contained"}
             color={"primary"}
             className={classes.button}
-            data-aos="fade-down"
-            data-aos-delay="100"
-            data-aos-duration="700"
           >
             <LinkScroll
               to={"AboutMe"}
@@ -146,14 +151,27 @@ export default function Home() {
           </MuiButton>
         </div>
       </div>
-      <div
+     
+      {desktopView && (
+         <div
         className={classes.svgWrap}
         data-aos-delay="100"
-        data-aos="fade-down"
+        data-aos="fade-up"
         data-aos-anchor-placement="top-bottom"
       >
         <img className={classes.svgStyle} src={Svg} alt="car" />
       </div>
+      )}
+      {!desktopView && (
+         <div
+        className={classes.svgWrap}
+        data-aos-delay="50"
+        data-aos="zoom-in"
+        data-aos-anchor-placement="top-bottom"
+      >
+        <img className={classes.svgStyle} src={Svg} alt="car" />
+      </div>
+      )}
     </div>
   );
 }

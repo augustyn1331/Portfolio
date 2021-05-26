@@ -25,27 +25,26 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
-  //Containers
-  drawer: {
-    zIndex: 2,
-    background: "linear-gradient(#f7f9fb,#fff,#fff,#fff,#fff)",
-  },
+  //Containers 
   toolbar: {
     justifyContent: "space-between",
   },
-  drawerContainer: {
+  drawer: {
+    background: "linear-gradient(#f7f9fb,#fff,#fff,#fff,#fff)",
+  },
+  drawerWrapper: {
     padding: "20px 30px",
     flexDirection: "column",
     listStyleType:"none !important"
   },
   //Logo img and logo link
-  logoImage: {
+ navLogo: {
     height: "30px",
     [theme.breakpoints.up("md")]: {
       height: "41px",
     },
   },
-  logoLink: {
+  navLogoLink: {
     marginLeft: "16px",
     height: "56px",
     cursor: "pointer",
@@ -59,17 +58,15 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
     height: "56px",
   },
   menuIcon: {
-    color: "rgba(244, 247, 250, 0.95)",
     height: "42px",
   },
   //Menu links
   navUl: {
     marginTop: "0px",
-    flexDirection: "row",
+    listStyleType:"none !important",
     [theme.breakpoints.up("lg")]: {
       marginRight: "64px",
     },
-    listStyleType:"none !important"
   },
   navList: {
     height: "76px",
@@ -95,7 +92,8 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
     [theme.breakpoints.up("md")]: {
       color: theme.palette.primary.light,
     },
-    
+
+    //underline shape
     "&::before": {
       content: "''",
       position: "absolute",
@@ -106,9 +104,9 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       transition: "transform 200ms ease-out",
       transform: "scaleX(0)",
       transformOrigin:"100% 50%",
-      backgroundColor:theme.palette.secondary.dark,
+      backgroundColor:theme.palette.secondary.main,
     },
-    
+    //underline animation on active link
     "&.active::before": {
       transform: "scaleX(1)",
       transformOrigin:"0% 50%"
@@ -156,7 +154,7 @@ export default function NavBar() {
             onClose: handleDrawerClose,
           }}
         >
-         <ul className={`${classes.drawerContainer} ${classes.flexbox}`}>
+         <ul className={`${classes.drawerWrapper} ${classes.flexbox}`}>
             {getDrawerChoices()}
           </ul>
         </Drawer>
@@ -173,9 +171,9 @@ export default function NavBar() {
           spy={true}
           offset={-76}
           exact="true"
-          className={`${classes.logoLink} ${classes.flexbox}`}
+          className={`${classes.navLogoLink} ${classes.flexbox}`}
         >
-          <img className={classes.logoImage} src={logo} alt="car" />
+          <img className={classes.navLogo} src={logo} alt="car" />
         </LinkScroll>
     );
   };

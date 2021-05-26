@@ -1,9 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
-import photo from "../img/photosquare.jpg";
-import Typography from "@material-ui/core/Typography";
-import SvgsCard from "./cards/SvgsCard";
-import rwd from "../img/rwd_dev.svg";
-import mobile from "../img/mobile_dev.svg";
+import photo from "../../img/photosquare.jpg";
+import SvgsCard from "../cards/SvgsCard";
+import rwd from "../../img/rwd_dev.svg";
+import mobile from "../../img/mobile_dev.svg";
 
 const useStyles = makeStyles((theme) => ({
   flexbox: {
@@ -69,6 +68,9 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "row",
     },
   },
+  text: {
+    color: "#ffffffdd",
+  },
 }));
 
 export default function AboutMe() {
@@ -80,29 +82,37 @@ export default function AboutMe() {
           <img id="myphoto" className={classes.photo} src={photo} alt="AG" />
         </div>
         <div className={`${classes.textWrapper} ${classes.flexbox}`}>
-          <Typography
-            variant="body1"
-            component="p"
-            data-aos="fade-down" data-aos-delay="500"
-          >
+          <p className={classes.text} data-aos="fade-down" data-aos-delay="500">
             &emsp;Nazywam się Augustyn Głowacki i jestem studentem III roku
             informatyki na Politechnice Częstochowskiej, specjalizacja
             Programowanie Aplikacji Internetowych. We własnym zakresie rozwijam
             swoje umiejętności, aby zostać programistą, a konkretniej Front-end
             Developerem. Moje pomysły realizuję używając biblioteki React.js
             oraz React Native. Na co dzień projektuję:
-          </Typography>
-          <div className={classes.cardWrapper} data-aos="fade-down" data-aos-delay="500" data-aos-duration="600">
-            <SvgsCard
-              title="Strony Internetowe"
-              imageUrl={rwd}
-              description="W każdym projekcie dbam o responsywność strony, aby wyglądała tak samo dobrze na telefonie, tablecie oraz komputerze."
-            ></SvgsCard>
-            <SvgsCard
-              title="Aplikacje mobilne"
-              imageUrl={mobile}
-              description="Dzięki React Native mogę stworzyć aplikację działającą zarówno na systemie Android i iOS."
-            ></SvgsCard>
+          </p>
+          <div className={classes.cardWrapper}>
+            <div
+              data-aos="fade-down"
+              data-aos-delay="500"
+              data-aos-duration="600"
+            >
+              <SvgsCard
+                title="Strony Internetowe"
+                imageUrl={rwd}
+                description="W każdym projekcie dbam o responsywność strony, aby wyglądała tak samo dobrze na telefonie, tablecie oraz komputerze."
+              />
+            </div>
+            <div
+              data-aos="fade-down"
+              data-aos-delay="500"
+              data-aos-duration="600"
+            >
+              <SvgsCard
+                title="Aplikacje mobilne"
+                imageUrl={mobile}
+                description="Dzięki React Native mogę stworzyć aplikację działającą zarówno na systemie Android i iOS."
+              />
+            </div>
           </div>
         </div>
       </div>

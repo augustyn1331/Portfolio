@@ -1,10 +1,10 @@
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import ImageCard from "./cards/ImageCard";
-import add from "../img/add.png";
-import actions from "../img/actions.png";
-import SvgGitHubLogo from "../img/GitHubLogo";
-import Typography from "@material-ui/core/Typography";
+import ImageCard from "../cards/ImageCard";
+import add from "../../img/add.png";
+import actions from "../../img/actions.png";
+import SvgGitHubLogo from "../../img/GitHubLogo";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
+
 const useStyles = makeStyles((theme) => ({
   flexbox: {
     display: "flex",
@@ -27,12 +27,12 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("lg")]: {
       flexDirection: "row",
     },
-  }, 
+  },
   title: {
     margin: "0px 16px 24px 16px",
   },
   card: {
-    maxWidth: 250,
+    maxWidth: 260,
     background: "white",
     margin: "16px 24px 24px 24px",
     display: "flex",
@@ -53,6 +53,10 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "1rem",
   },
   cardDescription: {
+    color: "#45435f",
+    fontWeight: 300,
+    textAlign: "center",
+    letterSpacing: "-0.01em",
     fontSize: "0.85rem !important",
     [theme.breakpoints.up("md")]: {
       marginTop: "1rem",
@@ -75,8 +79,10 @@ const useStyles = makeStyles((theme) => ({
 export default function Projects() {
   const classes = useStyles();
   const theme = useTheme();
+  //returns true if window width is above 960px
   const desktopView = useMediaQuery(theme.breakpoints.up("md"));
-  const places = [
+  //data to send to ImageCard component
+  const cardData = [
     {
       title: "Okienko popup",
       description:
@@ -94,16 +100,16 @@ export default function Projects() {
   return (
     <div className={`${classes.root} ${classes.flexbox}`} id="Projects">
       <div className={classes.title}>
-        <Typography variant="h2" component="h2">
-          Projekty
-        </Typography>
+        <h2>Projekty</h2>
       </div>
       <div className={`${classes.wrapper} ${classes.flexbox}`}>
+        
         {desktopView ? (
+          //disable animations under 960px window width (better user experience)
           <>
             <div data-aos="fade-right" data-aos-delay="1000">
               <ImageCard
-                place={places[1]}
+                place={cardData[1]}
                 card={classes.card}
                 title={classes.cardTitle}
                 desc={classes.cardDescription}
@@ -111,7 +117,7 @@ export default function Projects() {
             </div>
             <div data-aos="fade-left" data-aos-delay="500">
               <ImageCard
-                place={places[0]}
+                place={cardData[0]}
                 card={classes.card}
                 title={classes.cardTitle}
                 desc={classes.cardDescription}
@@ -121,13 +127,13 @@ export default function Projects() {
         ) : (
           <>
             <ImageCard
-              place={places[1]}
+              place={cardData[1]}
               card={classes.card}
               title={classes.cardTitle}
               desc={classes.cardDescription}
             />
             <ImageCard
-              place={places[0]}
+              place={cardData[0]}
               card={classes.card}
               title={classes.cardTitle}
               desc={classes.cardDescription}
@@ -135,7 +141,9 @@ export default function Projects() {
           </>
         )}
       </div>
+
       {desktopView && (
+        //show github icon only above 960px window width
         <div>
           <a
             id="githubLink"

@@ -1,9 +1,8 @@
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import CallOutlinedIcon from "@material-ui/icons/CallOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
-import Svg from "../img/mobiletesting.svg";
+import Svg from "../../img/mobiletesting.svg";
 
 const useStyles = makeStyles((theme: Theme) => ({
   flexbox: {
@@ -39,6 +38,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: "0.9rem !important",
     color: theme.palette.primary.light,
     fontWeight: 400,
+    [theme.breakpoints.up("sm")]: {
+      fontSize: "1rem !important",
+    },
     [theme.breakpoints.up("md")]: {
       fontSize: "1.2rem !important",
     },
@@ -60,11 +62,11 @@ const useStyles = makeStyles((theme: Theme) => ({
         right: "0",
         bottom: "0",
         height: "3px",
-        backgroundColor: theme.palette.secondary.dark,
+        backgroundColor: theme.palette.secondary.main,
         transition: "transform 300ms ease-in-out",
         transform: "scaleX(0)",
       },
-      "&:hover::before,\n&:focus::before": { transform: "scaleX(1)" },
+      "&:hover::before": { transform: "scaleX(1)" },
     },
   },
   icon: {
@@ -80,10 +82,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     margin: "8px 0px 0px 0px",
     [theme.breakpoints.up("sm")]: {
       maxWidth: "240px",
+      margin: "36px 16px 0px 16px",
     },
     [theme.breakpoints.up("md")]: {
       maxWidth: "320px",
-      margin: "36px 16px 0px 16px",
     },
     [theme.breakpoints.up("lg")]: {
       maxWidth: "400px",
@@ -105,14 +107,13 @@ export default function Contact() {
   return (
     <div className={`${classes.root} ${classes.flexbox}`} id="Contact">
       <div className={classes.flexbox}>
-        <Typography className={`${classes.title}`} variant="h2" component="h2">
+        <h2 className={classes.title} >
           Kontakt
-        </Typography>
+        </h2>
       </div>
       <div className={`${classes.outsideWrapper} ${classes.flexbox}`}>
         <div className={`${classes.linksWrapper} ${classes.flexbox}`}>
           <a
-            id="contactLinkPhone"
             className={classes.linkTextAnimation}
             href="tel:790605945"
             target="_blank"
@@ -122,10 +123,9 @@ export default function Contact() {
             data-aos-delay="500"
           >
             <CallOutlinedIcon className={classes.icon} />
-            <Typography className={classes.linkText}>790 605 945</Typography>
+            <p className={classes.linkText}>790 605 945</p>
           </a>
           <a
-            id="contactLinkEmail"
             className={classes.linkTextAnimation}
             href="mailto:augustyn1331@gmail.com"
             target="_blank"
@@ -135,12 +135,11 @@ export default function Contact() {
             data-aos-delay="1000"
           >
             <EmailOutlinedIcon className={classes.icon} />
-            <Typography className={classes.linkText}>
+            <p className={classes.linkText}>
               augustyn1331@gmail.com
-            </Typography>
+            </p>
           </a>
           <a
-            id="contactLinkChat"
             className={classes.linkTextAnimation}
             href="https://www.m.me/duzyofiszjal"
             target="_blank"
@@ -150,7 +149,7 @@ export default function Contact() {
             data-aos-delay="1500"
           >
             <ChatOutlinedIcon className={classes.icon} />
-            <Typography className={classes.linkText}>messenger</Typography>
+            <p className={classes.linkText}>messenger</p>
           </a>
         </div>
         <div className={classes.svgWrap}>

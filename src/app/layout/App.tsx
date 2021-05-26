@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import theme from "./theme";
+import theme from "./muiTheme";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Redirect, Route, Switch } from "react-router-dom";
 import OneLongPage from "../../pages/OneLongPage";
@@ -10,7 +10,7 @@ import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 const App = () => {
   const classes = useStyles();
-  //loading screen animation
+  //loading screen animation set for a specified amount of time
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
@@ -22,12 +22,12 @@ const App = () => {
     <>
       {loading ? (
         <div
-          className={classes.loader}
+          className={classes.loadingPage}
           data-aos="fade-in"
           data-aos-delay="150"
           data-aos-duration="500"
         >
-          <img className={classes.logoImage} src={logo} alt="car" />
+          <img className={classes.loadingPageLogo} src={logo} alt="car" />
           <ClimbingBoxLoader size={15} color={"#175daf"} loading={loading} />
         </div>
       ) : (

@@ -1,19 +1,18 @@
-import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
 import { Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
   media: {
-    maxWidth: "250px",
+    width: "260px",
     [theme.breakpoints.up("md")]: {
       width: "240px",
     },
   },
   cardContent: {
+    minHeight:"204.5px",
     textAlign: "center",
     display: "flex",
     justifyContent: "center",
@@ -26,7 +25,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
 }));
 
-/* Image Card with hover effects*/
+/* Image Card with hover effect */
 export default function ImageCard(props: any) {
   const classes = useStyles();
   const { place, title, desc, card } = props;
@@ -38,12 +37,12 @@ export default function ImageCard(props: any) {
         image={place.imageUrl}
       />
       <CardContent className={classes.cardContent}>
-        <Typography variant="h3" component="h3" className={title}>
+        <h3 className={title}>
           {place.title}
-        </Typography>
-        <Typography variant="body2" className={desc}>
+        </h3>
+        <p className={desc}>
           {place.description}
-        </Typography>
+        </p>
       </CardContent>
     </Card>
   );
