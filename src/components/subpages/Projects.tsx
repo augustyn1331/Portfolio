@@ -1,7 +1,7 @@
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import ImageCard from "../cards/ImageCard";
-import add from "../../img/add.png";
 import actions from "../../img/actions.png";
+import tesla from "../../img/tes.png";
 import SvgGitHubLogo from "../../img/GitHubLogo";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
@@ -29,19 +29,21 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
-    margin: "0px 16px 24px 16px",
+    margin: "0px 16px",
+    [theme.breakpoints.up("sm")]: {
+      margin: "0px 16px 24px 16px",
+    },
   },
   card: {
-    maxWidth: 260,
     background: "white",
-    margin: "16px 24px 24px 24px",
+    margin: "16px 24px 40px 24px",
     display: "flex",
     flexDirection: "column",
     transform: "scale(1) translateZ(0)",
     willChange: "transform",
+    boxShadow:"0 1px 3px rgba(0,0,0,0.1), 0 3px 10px rgba(0,0,0,0.15)",
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
-      maxWidth: 460,
       "&:hover": {
         transform: "scale(1.05) translateZ(0)",
       },
@@ -50,17 +52,25 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
   },
   cardTitle: {
-    marginBottom: "1rem",
+    marginTop:"5%",
+    marginBottom: "1.25rem",
+    [theme.breakpoints.up("md")]: {
+      marginTop:"20%",
+      marginBottom: "1.5rem",
+    },
   },
   cardDescription: {
     color: "#45435f",
     fontWeight: 300,
     textAlign: "center",
     letterSpacing: "-0.01em",
-    fontSize: "0.85rem !important",
+    lineHeight:"1.2rem",
+    fontSize: "0.8rem !important",
+    marginBottom:"0.5rem",
     [theme.breakpoints.up("md")]: {
-      marginTop: "1rem",
-      fontSize: "0.95rem !important",
+      marginTop: "0.85rem",
+      marginBottom:"0rem",
+      fontSize: "0.90rem !important",
     },
   },
   github: {
@@ -84,16 +94,18 @@ export default function Projects() {
   //data to send to ImageCard component
   const cardData = [
     {
-      title: "Okienko popup",
+      title: "Aplikacja Mobilna",
       description:
-        "Formularz dodawania faktury w projekcie interfejsu aplikacji webowej.",
-      imageUrl: add,
+        "Odwzorowanie designu strony internetowej Tesli w projekcie prostej aplikacji mobilnej.",
+      imageUrl: tesla,
+      src: "https://github.com/augustyn1331/React-Native-Car-App"
     },
     {
-      title: "Panel użytkownika",
+      title: "Aplikacja Internetowa",
       description:
-        "Lista faktur i opcje do wyboru dla danej pozycji w projekcie interfejsu aplikacji webowej.",
+        "Lista faktur wraz z opcjami do wyboru dla pozycji w projekcie interfejsu aplikacji internetowej do zarządzania fakturami.",
       imageUrl: actions,
+      src: "https://github.com/augustyn1331/Responsywne_Faktury"
     },
   ];
 

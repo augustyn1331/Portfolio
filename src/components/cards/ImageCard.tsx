@@ -6,22 +6,23 @@ import { Theme } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
   media: {
-    width: "260px",
+    maxWidth: "270px",
     [theme.breakpoints.up("md")]: {
-      width: "240px",
+      maxHeight: "360px",
     },
   },
   cardContent: {
-    minHeight:"204.5px",
     textAlign: "center",
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "column",
-    padding: "16px 8px",
+    padding: "16px 13px",
+    maxWidth: "270px",
     [theme.breakpoints.up("md")]: {
+      maxWidth: "236px",
       transform: "scale(1) !important",
-      padding: theme.spacing(2),
+      padding: "px",
     },
+  },
+  link: {
+    textDecoration: "none",
   },
 }));
 
@@ -30,20 +31,23 @@ export default function ImageCard(props: any) {
   const classes = useStyles();
   const { place, title, desc, card } = props;
   return (
-    <Card className={card}>
-      <CardMedia
-        component="img"
-        className={classes.media}
-        image={place.imageUrl}
-      />
-      <CardContent className={classes.cardContent}>
-        <h3 className={title}>
-          {place.title}
-        </h3>
-        <p className={desc}>
-          {place.description}
-        </p>
-      </CardContent>
-    </Card>
+    <a
+      className={classes.link}
+      href={place.src}
+      target="_blank"
+      rel="noreferrer"
+    >
+      <Card className={card}>
+        <CardMedia
+          component="img"
+          className={classes.media}
+          image={place.imageUrl}
+        />
+        <CardContent className={classes.cardContent}>
+          <h3 className={title}>{place.title}</h3>
+          <p className={desc}>{place.description}</p>
+        </CardContent>
+      </Card>
+    </a>
   );
 }

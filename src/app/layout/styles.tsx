@@ -60,12 +60,12 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       fontWeight: 500,
       letterSpacing: "0.01em",
       color: "#45435f",
-      fontSize: "1.3rem",
+      fontSize: "1.05rem",
       [theme.breakpoints.up("sm")]: {
-        fontSize: "1.4rem",
+        fontSize: "1.1rem",
       },
-      [theme.breakpoints.up("lg")]: {
-        fontSize: "1.7rem",
+      [theme.breakpoints.up("md")]: {
+        fontSize: "1.6rem",
       },
     },
     h4: {
