@@ -115,10 +115,6 @@ export default function Projects() {
         <h2>Projekty</h2>
       </div>
       <div className={`${classes.wrapper} ${classes.flexbox}`}>
-        
-        {desktopView ? (
-          //disable animations under 960px window width (better user experience)
-          <>
             <div data-aos="fade-right" data-aos-delay="1000">
               <ImageCard
                 place={cardData[1]}
@@ -134,24 +130,7 @@ export default function Projects() {
                 title={classes.cardTitle}
                 desc={classes.cardDescription}
               />
-            </div>{" "}
-          </>
-        ) : (
-          <>
-            <ImageCard
-              place={cardData[1]}
-              card={classes.card}
-              title={classes.cardTitle}
-              desc={classes.cardDescription}
-            />
-            <ImageCard
-              place={cardData[0]}
-              card={classes.card}
-              title={classes.cardTitle}
-              desc={classes.cardDescription}
-            />
-          </>
-        )}
+            </div>
       </div>
 
       {desktopView && (

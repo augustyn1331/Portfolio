@@ -29,6 +29,12 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   toolbar: {
     justifyContent: "space-between",
   },
+  appbar:{
+    [theme.breakpoints.down("md")]: {
+      animation: "fadein 0.2s ease-out",
+      WebkitAnimation:"fadein 0.2s ease-out"
+    },
+  },
   drawer: {
     background: "linear-gradient(#f7f9fb,#fff,#fff,#fff,#fff)",
   },
@@ -234,6 +240,7 @@ export default function NavBar() {
       data-aos="fade-down"
       data-aos-delay="100"
       elevation={mobileView ? 1 : 0}
+      className={classes.appbar}
     >
       {mobileView ? displayMobile() : displayDesktop()}
     </AppBar>

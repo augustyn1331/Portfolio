@@ -114,6 +114,8 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       "85%": { transform: "rotate(-5deg)" },
       "100%": { transform: "rotate(0deg)" },
     },
+    "@keyframes fadein": { "0%": { opacity: 0 }, "100%": { opacity: 1 } },
+    "@-webkit-keyframes fadein": { "0%": { opacity: 0 }, "100%": { opacity: 1 } },
   },
 
   //loading page styles
@@ -124,6 +126,8 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
     flexDirection: "column",
     width: "100%",
     height: "90vh",
+    animation: "fadein 0.4s ease-out",
+    WebkitAnimation: "fadein 0.4s ease-out",
   },
   loadingPageLogo: {
     boxSizing: "content-box",

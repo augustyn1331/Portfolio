@@ -15,14 +15,15 @@ declare global {
 //component wrapping all other components in one long page
 const OneLongPage = ()=>{
     //function returning true if user browses the page in messenger/facebook built-in browser 
-    const isInFbApp = ()=> {
-        var ua = navigator.userAgent || navigator.vendor || window.opera;
-        return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
-    }
+    // const isInFbApp = ()=> {
+    //     var ua = navigator.userAgent || navigator.vendor || window.opera;
+    //     return (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1);
+    // }
+    
     useEffect(() => {
         AOS.init({ once: true,
             duration: 300,
-            disable: isInFbApp(), //disable animations on scroll depending on returned value (they were laggy and glitchy inside in-app browser)
+            disable: "mobile", //disable animations on scroll depending on returned value (they were laggy and glitchy inside in-app browser)
             easing: 'ease-out',
           });
       }, []);

@@ -1,9 +1,8 @@
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles} from "@material-ui/core/styles";
 import { default as MuiButton } from "@material-ui/core/Button";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import Svg from "../../img/startup.svg";
 import { Link as LinkScroll } from "react-scroll";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 const useStyles = makeStyles((theme) => ({
   flexbox: {
@@ -16,6 +15,10 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "100vh",
     padding: "0px 16px 32px 16px !important",
     background: "linear-gradient(#fafbfd,#fff,#fff,#fff)",
+    [theme.breakpoints.down("md")]: {
+      animation: "fadein 0.2s ease-out",
+      WebkitAnimation: "fadein 0.2s ease-out",
+    },
     [theme.breakpoints.up("md")]: {
       padding: "76px 16px 76px 16px !important",
       flexDirection: "row",
@@ -106,10 +109,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
   const classes = useStyles();
-  const theme = useTheme();
-  //returns true if window width is above 960px
-  const desktopView = useMediaQuery(theme.breakpoints.up("md"));
-  
+
   return (
     <div className={`${classes.root} ${classes.flexbox}`} id="Home">
       <div className={`${classes.wrapper} ${classes.flexbox}`}>
@@ -151,9 +151,7 @@ export default function Home() {
           </MuiButton>
         </div>
       </div>
-     
-      {desktopView && (
-         <div
+      <div
         className={classes.svgWrap}
         data-aos-delay="100"
         data-aos="fade-up"
@@ -161,17 +159,6 @@ export default function Home() {
       >
         <img className={classes.svgStyle} src={Svg} alt="car" />
       </div>
-      )}
-      {!desktopView && (
-         <div
-        className={classes.svgWrap}
-        data-aos-delay="50"
-        data-aos="zoom-in"
-        data-aos-anchor-placement="top-bottom"
-      >
-        <img className={classes.svgStyle} src={Svg} alt="car" />
-      </div>
-      )}
     </div>
   );
 }

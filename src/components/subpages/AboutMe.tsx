@@ -88,7 +88,7 @@ export default function AboutMe() {
             Programowanie Aplikacji Internetowych. We własnym zakresie rozwijam
             swoje umiejętności, aby zostać programistą, a konkretniej Front-end
             Developerem. Moje pomysły realizuję używając biblioteki React.js
-            oraz React Native. Na co dzień projektuję:
+            oraz frameworka React Native. Na co dzień projektuję:
           </p>
           <div className={classes.cardWrapper}>
             <div

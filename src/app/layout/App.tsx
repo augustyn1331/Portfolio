@@ -23,9 +23,6 @@ const App = () => {
       {loading ? (
         <div
           className={classes.loadingPage}
-          data-aos="fade-in"
-          data-aos-delay="150"
-          data-aos-duration="500"
         >
           <img className={classes.loadingPageLogo} src={logo} alt="car" />
           <ClimbingBoxLoader size={15} color={"#175daf"} loading={loading} />
