@@ -3,7 +3,7 @@ import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
 import React, { useState } from "react";
 import { Link as LinkScroll } from "react-scroll";
 import logo from "../../img/logo.png";
-import menuicon from "../../img/menu_outlined_icon.svg";
+import SVGMenuIcon from "../../img/MenuIcon";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 const headersData = [
   {
@@ -28,6 +28,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   //Containers 
   toolbar: {
     justifyContent: "space-between",
+    minHeight:"54px"
   },
   appbar:{
     [theme.breakpoints.down("md")]: {
@@ -52,7 +53,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   },
   navLogoLink: {
     marginLeft: "16px",
-    height: "56px",
+    height: "54px",
     cursor: "pointer",
     [theme.breakpoints.up("lg")]: {
       marginLeft: "100px",
@@ -61,10 +62,11 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   //Menu button
   menuButton: {
     padding: "0px 8px",
-    height: "56px",
+    height: "54px",
   },
   menuIcon: {
-    height: "42px",
+    height: "25px",
+    fill: "rgba(255,255,255,0.95)"
   },
   //Menu links
   navUl: {
@@ -150,7 +152,7 @@ export default function NavBar() {
       <Toolbar className={classes.toolbar}>
         {myLogo()}
         <IconButton className={classes.menuButton} onClick={handleDrawerOpen}>
-          <img className={classes.menuIcon} src={menuicon} alt="more" />
+          <SVGMenuIcon className={classes.menuIcon}/>
         </IconButton>
         <Drawer
           classes={{ paper: classes.drawer }}
@@ -197,7 +199,7 @@ export default function NavBar() {
             smooth={true}
             duration={500}
             spy={true}
-            offset={-55} //different offset for mobile nav
+            offset={-53} //different offset for mobile nav
             exact="true"
             className={`${classes.navLink} ${classes.flexbox}`}
             onClick={handleDrawerClose}

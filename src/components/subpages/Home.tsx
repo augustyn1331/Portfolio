@@ -141,7 +141,7 @@ export default function Home() {
               smooth={true}
               duration={500}
               spy={true}
-              offset={-20}
+              offset={-53}
               exact="true"
               className={`${classes.buttonText} ${classes.flexbox}`}
             >
