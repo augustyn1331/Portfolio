@@ -1,10 +1,11 @@
 import { AppBar, Toolbar, IconButton, Drawer } from "@material-ui/core";
-import { makeStyles, Theme, useTheme } from "@material-ui/core/styles";
-import React, { useState } from "react";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+import { useState } from "react";
 import { Link as LinkScroll } from "react-scroll";
-import logo from "../../img/logo.png";
-import SVGMenuIcon from "../../img/MenuIcon";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import logo from "../../../img/logo.png";
+import SVGMenuIcon from "../../../img/MenuIcon";
+import useViewport from "../hooks/useViewport";
+
 const headersData = [
   {
     label: "O MNIE",
@@ -25,15 +26,15 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
-  //Containers 
+  //Containers
   toolbar: {
     justifyContent: "space-between",
-    minHeight:"54px"
+    minHeight: "54px",
   },
-  appbar:{
+  appbar: {
     [theme.breakpoints.down("md")]: {
       animation: "fadein 0.2s ease-out",
-      WebkitAnimation:"fadein 0.2s ease-out"
+      WebkitAnimation: "fadein 0.2s ease-out",
     },
   },
   drawer: {
@@ -42,10 +43,10 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   drawerWrapper: {
     padding: "20px 30px",
     flexDirection: "column",
-    listStyleType:"none !important"
+    listStyleType: "none !important",
   },
   //Logo img and logo link
- navLogo: {
+  navLogo: {
     height: "30px",
     [theme.breakpoints.up("md")]: {
       height: "41px",
@@ -66,12 +67,12 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   },
   menuIcon: {
     height: "25px",
-    fill: "rgba(255,255,255,0.95)"
+    fill: "rgba(255,255,255,0.95)",
   },
   //Menu links
   navUl: {
     marginTop: "0px",
-    listStyleType:"none !important",
+    listStyleType: "none !important",
     [theme.breakpoints.up("lg")]: {
       marginRight: "64px",
     },
@@ -111,32 +112,33 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       height: "3px",
       transition: "transform 200ms ease-out",
       transform: "scaleX(0)",
-      transformOrigin:"100% 50%",
-      backgroundColor:theme.palette.secondary.main,
+      transformOrigin: "100% 50%",
+      backgroundColor: theme.palette.secondary.main,
     },
     //underline animation on active link
     "&.active::before": {
       transform: "scaleX(1)",
-      transformOrigin:"0% 50%"
+      transformOrigin: "0% 50%",
     },
   },
 }));
 
 export default function NavBar() {
-  const theme = useTheme();
+  const classes = useStyles();
+
   /* useState to control drawer being opened*/
   const [drawerOpen, setDrawerOpen] = useState(false);
-  /* Mobile View Query from Material UI*/
-  const mobileView = useMediaQuery(theme.breakpoints.down("sm"));
+
   /*Open and Close drawer */
   const handleDrawerOpen = () => setDrawerOpen(true);
   const handleDrawerClose = () => setDrawerOpen(false);
-  const classes = useStyles();
 
-
+  //get current window width custom hook
+  const width = useViewport();
+  const mobileView = width < 960;
 
   /* Display desktop Navbar */
-  const displayDesktop = () => {
+  const navbarDesktop = () => {
     return (
       <Toolbar className={classes.toolbar}>
         {myLogo()}
@@ -147,12 +149,12 @@ export default function NavBar() {
     );
   };
   /* Display mobile Navbar */
-  const displayMobile = () => {
+  const navbarMobile = () => {
     return (
       <Toolbar className={classes.toolbar}>
         {myLogo()}
         <IconButton className={classes.menuButton} onClick={handleDrawerOpen}>
-          <SVGMenuIcon className={classes.menuIcon}/>
+          <SVGMenuIcon className={classes.menuIcon} />
         </IconButton>
         <Drawer
           classes={{ paper: classes.drawer }}
@@ -162,8 +164,8 @@ export default function NavBar() {
             onClose: handleDrawerClose,
           }}
         >
-         <ul className={`${classes.drawerWrapper} ${classes.flexbox}`}>
-            {getDrawerChoices()}
+          <ul className={`${classes.drawerWrapper} ${classes.flexbox}`}>
+            {getMobileLinks()}
           </ul>
         </Drawer>
       </Toolbar>
@@ -172,28 +174,25 @@ export default function NavBar() {
 
   const myLogo = () => {
     return (
-        <LinkScroll
-          to={"Home"}
-          smooth={true}
-          duration={500}
-          spy={true}
-          offset={-76}
-          exact="true"
-          className={`${classes.navLogoLink} ${classes.flexbox}`}
-        >
-          <img className={classes.navLogo} src={logo} alt="car" />
-        </LinkScroll>
+      <LinkScroll
+        to={"Home"}
+        smooth={true}
+        duration={500}
+        spy={true}
+        offset={-76}
+        exact="true"
+        className={`${classes.navLogoLink} ${classes.flexbox}`}
+      >
+        <img className={classes.navLogo} src={logo} alt="car" />
+      </LinkScroll>
     );
   };
 
   /* Mapping drawer links */
-  const getDrawerChoices = () => {
+  const getMobileLinks = () => {
     return headersData.map(({ label, href }) => {
       return (
-        <li
-          key = {label}
-          className={classes.navList}
-      >
+        <li key={label} className={classes.navList}>
           <LinkScroll
             to={href}
             smooth={true}
@@ -215,36 +214,29 @@ export default function NavBar() {
   const getDesktopLinks = () => {
     return headersData.map(({ label, href }) => {
       return (
-        <li
-          key = {label}
-          className={classes.navList}
-      >
-        <LinkScroll
-        id={href+"Link"}
-                to={href}
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-76}
-                exact="true"
-                className={`${classes.navLink} ${classes.flexbox}`}
-        >
-          {label}
-        </LinkScroll>
-      </li>
+        <li key={label} className={classes.navList}>
+          <LinkScroll
+            id={href + "Link"}
+            to={href}
+            smooth={true}
+            duration={500}
+            spy={true}
+            offset={-76}
+            exact="true"
+            className={`${classes.navLink} ${classes.flexbox}`}
+          >
+            {label}
+          </LinkScroll>
+        </li>
       );
     });
   };
 
-  /* Slight shadow only on Mobile Navbar*/
   return (
-    <AppBar
-      data-aos="fade-down"
-      data-aos-delay="100"
-      elevation={mobileView ? 1 : 0}
-      className={classes.appbar}
-    >
-      {mobileView ? displayMobile() : displayDesktop()}
-    </AppBar>
+    <div data-aos="fade-down" data-aos-delay="100">
+      <AppBar elevation={mobileView ? 1 : 0} className={classes.appbar}>
+        {mobileView ? navbarMobile() : navbarDesktop()}
+      </AppBar>
+    </div>
   );
 }

@@ -1,7 +1,7 @@
 import { makeStyles} from "@material-ui/core/styles";
 import { default as MuiButton } from "@material-ui/core/Button";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
-import Svg from "../../img/startup.svg";
+import Svg from "./../img/startup.svg";
 import { Link as LinkScroll } from "react-scroll";
 
 const useStyles = makeStyles((theme) => ({

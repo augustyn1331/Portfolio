@@ -1,8 +1,8 @@
 import { makeStyles } from "@material-ui/core/styles";
-import photo from "../../img/photosquare.jpg";
-import SvgsCard from "../cards/SvgsCard";
-import rwd from "../../img/rwd_dev.svg";
-import mobile from "../../img/mobile_dev.svg";
+import photo from "../img/photosquare.jpg";
+import SvgsCard from "./shared/cards/SvgsCard";
+import rwd from "../img/rwd_dev.svg";
+import mobile from "../img/mobile_dev.svg";
 
 const useStyles = makeStyles((theme) => ({
   flexbox: {

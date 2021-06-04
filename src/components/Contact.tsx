@@ -2,7 +2,7 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import CallOutlinedIcon from "@material-ui/icons/CallOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
-import Svg from "../../img/mobiletesting.svg";
+import Svg from "./../img/mobiletesting.svg";
 
 const useStyles = makeStyles((theme: Theme) => ({
   flexbox: {

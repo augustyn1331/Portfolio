@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import theme from "./muiTheme";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Redirect, Route, Switch } from "react-router-dom";

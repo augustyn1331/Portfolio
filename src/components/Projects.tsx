@@ -1,9 +1,9 @@
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import ImageCard from "../cards/ImageCard";
-import actions from "../../img/actions.png";
-import tesla from "../../img/tes.png";
-import SvgGitHubLogo from "../../img/GitHubLogo";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
+import { makeStyles } from "@material-ui/core/styles";
+import ImageCard from "./shared/cards/ImageCard";
+import actions from "./../img/actions.png";
+import tesla from "./../img/tes.png";
+import SvgGitHubLogo from "./../img/GitHubLogo";
+import useViewport from "./shared/hooks/useViewport";
 
 const useStyles = makeStyles((theme) => ({
   flexbox: {
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     transform: "scale(1) translateZ(0)",
     willChange: "transform",
-    boxShadow:"0 1px 3px rgba(0,0,0,0.1), 0 3px 10px rgba(0,0,0,0.15)",
+    boxShadow: "0 1px 3px rgba(0,0,0,0.1), 0 3px 10px rgba(0,0,0,0.15)",
     [theme.breakpoints.up("md")]: {
       flexDirection: "row",
       "&:hover": {
@@ -52,10 +52,10 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
   },
   cardTitle: {
-    marginTop:"5%",
+    marginTop: "5%",
     marginBottom: "1.25rem",
     [theme.breakpoints.up("md")]: {
-      marginTop:"20%",
+      marginTop: "20%",
       marginBottom: "1.5rem",
     },
   },
@@ -64,12 +64,12 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 300,
     textAlign: "center",
     letterSpacing: "-0.01em",
-    lineHeight:"1.2rem",
+    lineHeight: "1.2rem",
     fontSize: "0.8rem !important",
-    marginBottom:"0.5rem",
+    marginBottom: "0.5rem",
     [theme.breakpoints.up("md")]: {
       marginTop: "0.85rem",
-      marginBottom:"0rem",
+      marginBottom: "0rem",
       fontSize: "0.90rem !important",
     },
   },
@@ -85,29 +85,30 @@ const useStyles = makeStyles((theme) => ({
     cursor: "pointer",
   },
 }));
+//data to send to ImageCard component
+const cardData = [
+  {
+    title: "Aplikacja Mobilna",
+    description:
+      "Odwzorowanie designu strony internetowej Tesli w projekcie prostej aplikacji mobilnej.",
+    imageUrl: tesla,
+    src: "https://github.com/augustyn1331/React-Native-Car-App",
+  },
+  {
+    title: "Aplikacja Internetowa",
+    description:
+      "Lista faktur wraz z opcjami do wyboru dla pozycji w projekcie interfejsu aplikacji internetowej do zarządzania fakturami.",
+    imageUrl: actions,
+    src: "https://github.com/augustyn1331/Responsywne_Faktury",
+  },
+];
+
 
 export default function Projects() {
   const classes = useStyles();
-  const theme = useTheme();
-  //returns true if window width is above 960px
-  const desktopView = useMediaQuery(theme.breakpoints.up("md"));
-  //data to send to ImageCard component
-  const cardData = [
-    {
-      title: "Aplikacja Mobilna",
-      description:
-        "Odwzorowanie designu strony internetowej Tesli w projekcie prostej aplikacji mobilnej.",
-      imageUrl: tesla,
-      src: "https://github.com/augustyn1331/React-Native-Car-App"
-    },
-    {
-      title: "Aplikacja Internetowa",
-      description:
-        "Lista faktur wraz z opcjami do wyboru dla pozycji w projekcie interfejsu aplikacji internetowej do zarządzania fakturami.",
-      imageUrl: actions,
-      src: "https://github.com/augustyn1331/Responsywne_Faktury"
-    },
-  ];
+  //get current window width custom hook
+  const width = useViewport();
+  const mobileView = width < 960;
 
   return (
     <div className={`${classes.root} ${classes.flexbox}`} id="Projects">
@@ -115,25 +116,25 @@ export default function Projects() {
         <h2>Projekty</h2>
       </div>
       <div className={`${classes.wrapper} ${classes.flexbox}`}>
-            <div data-aos="fade-right" data-aos-delay="1000">
-              <ImageCard
-                place={cardData[1]}
-                card={classes.card}
-                title={classes.cardTitle}
-                desc={classes.cardDescription}
-              />
-            </div>
-            <div data-aos="fade-left" data-aos-delay="500">
-              <ImageCard
-                place={cardData[0]}
-                card={classes.card}
-                title={classes.cardTitle}
-                desc={classes.cardDescription}
-              />
-            </div>
+        <div data-aos="fade-right" data-aos-delay="1000">
+          <ImageCard
+            place={cardData[1]}
+            card={classes.card}
+            title={classes.cardTitle}
+            desc={classes.cardDescription}
+          />
+        </div>
+        <div data-aos="fade-left" data-aos-delay="500">
+          <ImageCard
+            place={cardData[0]}
+            card={classes.card}
+            title={classes.cardTitle}
+            desc={classes.cardDescription}
+          />
+        </div>
       </div>
 
-      {desktopView && (
+      {!mobileView && (
         //show github icon only above 960px window width
         <div>
           <a
