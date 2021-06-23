@@ -9,7 +9,8 @@ import logo from "../../img/logoblue.png";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 const App = () => {
-  const classes = useStyles();
+  // styles (css in js)
+  const {loadingPage, loadingPageLogo} = useStyles();
   //loading screen animation set for a specified amount of time
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -22,9 +23,9 @@ const App = () => {
     <>
       {loading ? (
         <div
-          className={classes.loadingPage}
+          className={loadingPage}
         >
-          <img className={classes.loadingPageLogo} src={logo} alt="car" />
+          <img className={loadingPageLogo} src={logo} alt="car" />
           <ClimbingBoxLoader size={15} color={"#175daf"} loading={loading} />
         </div>
       ) : (

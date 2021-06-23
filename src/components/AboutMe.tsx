@@ -3,14 +3,9 @@ import photo from "../img/photosquare.jpg";
 import SvgsCard from "./shared/cards/SvgsCard";
 import rwd from "../img/rwd_dev.svg";
 import mobile from "../img/mobile_dev.svg";
+import globalStyles from "../app/layout/styles";
 
 const useStyles = makeStyles((theme) => ({
-  flexbox: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-  },
   root: {
     minHeight: "100vh",
     background: theme.palette.primary.main,
@@ -68,21 +63,36 @@ const useStyles = makeStyles((theme) => ({
       flexDirection: "row",
     },
   },
-  text: {
-    color: "#ffffffdd",
-  },
 }));
 
+//data to send to SvgCard component
+const cardData = [
+  {
+    title: "Strony Internetowe",
+    imageUrl: rwd,
+    description:
+      "W każdym projekcie dbam o responsywność strony, aby wyglądała tak samo dobrze na telefonie, tablecie oraz komputerze.",
+  },
+  {
+    title: "Aplikacje mobilne",
+    imageUrl: mobile,
+    description:
+      "Dzięki React Native mogę stworzyć aplikację działającą zarówno na systemie Android i iOS.",
+  },
+];
+
 export default function AboutMe() {
+  //styles (css in js)
   const classes = useStyles();
+  const { flexbox } = globalStyles();
   return (
-    <div className={`${classes.root} ${classes.flexbox}`} id="AboutMe">
-      <div className={`${classes.flexbox} ${classes.imageWrapper}`}>
+    <div className={`${classes.root} ${flexbox}`} id="AboutMe">
+      <div className={`${flexbox} ${classes.imageWrapper}`}>
         <div data-aos="fade-down" data-aos-delay="500">
           <img id="myphoto" className={classes.photo} src={photo} alt="AG" />
         </div>
-        <div className={`${classes.textWrapper} ${classes.flexbox}`}>
-          <p className={classes.text} data-aos="fade-down" data-aos-delay="500">
+        <div className={`${classes.textWrapper} ${flexbox}`}>
+          <p data-aos="fade-down" data-aos-delay="500">
             &emsp;Nazywam się Augustyn Głowacki i jestem studentem III roku
             informatyki na Politechnice Częstochowskiej, specjalizacja
             Programowanie Aplikacji Internetowych. We własnym zakresie rozwijam
@@ -96,22 +106,14 @@ export default function AboutMe() {
               data-aos-delay="500"
               data-aos-duration="600"
             >
-              <SvgsCard
-                title="Strony Internetowe"
-                imageUrl={rwd}
-                description="W każdym projekcie dbam o responsywność strony, aby wyglądała tak samo dobrze na telefonie, tablecie oraz komputerze."
-              />
+              <SvgsCard props={cardData[0]} />
             </div>
             <div
               data-aos="fade-down"
               data-aos-delay="500"
               data-aos-duration="600"
             >
-              <SvgsCard
-                title="Aplikacje mobilne"
-                imageUrl={mobile}
-                description="Dzięki React Native mogę stworzyć aplikację działającą zarówno na systemie Android i iOS."
-              />
+              <SvgsCard props={cardData[1]} />
             </div>
           </div>
         </div>

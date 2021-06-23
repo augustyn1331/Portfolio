@@ -1,17 +1,12 @@
-import { makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { default as MuiButton } from "@material-ui/core/Button";
 import EmojiPeopleIcon from "@material-ui/icons/EmojiPeople";
 import Svg from "./../img/startup.svg";
 import { Link as LinkScroll } from "react-scroll";
+import globalStyles from "../app/layout/styles";
 
 const useStyles = makeStyles((theme) => ({
-  flexbox: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
   root: {
-    flexDirection: "column",
     minHeight: "100vh",
     padding: "0px 16px 32px 16px !important",
     background: "linear-gradient(#fafbfd,#fff,#fff,#fff)",
@@ -48,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
   },
 
   wrapper: {
-    flexDirection: "column",
     margin: "76px 0px 12px 0px",
     [theme.breakpoints.up("sm")]: {
       margin: "80px 0px 16px 0px",
@@ -73,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 600,
     fontSize: "0.9rem",
     padding: "9px 23px",
+    flexDirection: "row",
     [theme.breakpoints.up("lg")]: {
       padding: "10px 32px",
       fontSize: "1.15rem",
@@ -102,22 +97,20 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.05rem !important",
     },
   },
-  flexColumn: {
-    flexDirection: "column",
-  },
 }));
 
 export default function Home() {
+  //styles (css in js)
   const classes = useStyles();
-
+  const { flexbox } = globalStyles();
   return (
-    <div className={`${classes.root} ${classes.flexbox}`} id="Home">
-      <div className={`${classes.wrapper} ${classes.flexbox}`}>
+    <div className={`${classes.root} ${flexbox}`} id="Home">
+      <div className={`${classes.wrapper} ${flexbox}`}>
         <h1 data-aos="fade-down" data-aos-delay="100">
           Hej, tu Augustyn!
         </h1>
         <div
-          className={`${classes.flexColumn} ${classes.flexbox}`}
+          className={flexbox}
           data-aos="fade-down"
           data-aos-delay="100"
           data-aos-duration="500"
@@ -143,7 +136,7 @@ export default function Home() {
               spy={true}
               offset={-53}
               exact="true"
-              className={`${classes.buttonText} ${classes.flexbox}`}
+              className={`${classes.buttonText} ${flexbox}`}
             >
               <EmojiPeopleIcon className={classes.emojiicon} />
               Więcej

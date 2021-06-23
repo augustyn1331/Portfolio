@@ -5,6 +5,7 @@ import { Link as LinkScroll } from "react-scroll";
 import logo from "../../../img/logo.png";
 import SVGMenuIcon from "../../../img/MenuIcon";
 import useViewport from "../hooks/useViewport";
+import globalStyles from "../../../app/layout/styles";
 
 const headersData = [
   {
@@ -20,12 +21,8 @@ const headersData = [
     href: "Contact",
   },
 ];
+
 const useStyles = makeStyles<Theme>((theme: Theme) => ({
-  flexbox: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
   //Containers
   toolbar: {
     justifyContent: "space-between",
@@ -42,7 +39,6 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   },
   drawerWrapper: {
     padding: "20px 30px",
-    flexDirection: "column",
     listStyleType: "none !important",
   },
   //Logo img and logo link
@@ -71,6 +67,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   },
   //Menu links
   navUl: {
+    flexDirection: "row",
     marginTop: "0px",
     listStyleType: "none !important",
     [theme.breakpoints.up("lg")]: {
@@ -123,68 +120,61 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
   },
 }));
 
-export default function NavBar() {
-  const classes = useStyles();
 
+export default function NavBar() {
+  // styles (css in js)
+  const {
+    toolbar,
+    appbar,
+    drawer,
+    drawerWrapper,
+    navList,
+    navLogo,
+    navLogoLink,
+    navLink,
+    navUl,
+    menuIcon,
+    menuButton,
+  } = useStyles();
+
+  const { flexbox } = globalStyles();
   /* useState to control drawer being opened*/
   const [drawerOpen, setDrawerOpen] = useState(false);
-
   /*Open and Close drawer */
-  const handleDrawerOpen = () => setDrawerOpen(true);
-  const handleDrawerClose = () => setDrawerOpen(false);
-
-  //get current window width custom hook
+  const handleDrawerState = () => setDrawerOpen((currState) => !currState);
+  // Get current window width custom hook
   const width = useViewport();
   const mobileView = width < 960;
 
   /* Display desktop Navbar */
   const navbarDesktop = () => {
     return (
-      <Toolbar className={classes.toolbar}>
+      <Toolbar className={toolbar}>
         {myLogo()}
-        <ul className={`${classes.navUl} ${classes.flexbox}`}>
-          {getDesktopLinks()}
-        </ul>
-      </Toolbar>
-    );
-  };
-  /* Display mobile Navbar */
-  const navbarMobile = () => {
-    return (
-      <Toolbar className={classes.toolbar}>
-        {myLogo()}
-        <IconButton className={classes.menuButton} onClick={handleDrawerOpen}>
-          <SVGMenuIcon className={classes.menuIcon} />
-        </IconButton>
-        <Drawer
-          classes={{ paper: classes.drawer }}
-          {...{
-            anchor: "left",
-            open: drawerOpen,
-            onClose: handleDrawerClose,
-          }}
-        >
-          <ul className={`${classes.drawerWrapper} ${classes.flexbox}`}>
-            {getMobileLinks()}
-          </ul>
-        </Drawer>
+        <ul className={`${navUl} ${flexbox}`}>{getDesktopLinks()}</ul>
       </Toolbar>
     );
   };
 
-  const myLogo = () => {
+  /* Display mobile Navbar */
+  const navbarMobile = () => {
     return (
-      <LinkScroll
-        to={"Home"}
-        smooth={true}
-        duration={500}
-        spy={true}
-        offset={-76}
-        exact="true"
-        className={`${classes.navLogoLink} ${classes.flexbox}`}
-      >
-        <img className={classes.navLogo} src={logo} alt="car" />
-      </LinkScroll>
+      <Toolbar className={toolbar}>
+        {myLogo()}
+        <IconButton className={menuButton} onClick={handleDrawerState}>
+          <SVGMenuIcon className={menuIcon} />
+        </IconButton>
+        <Drawer
+          classes={{ paper: drawer }}
+          {...{
+            anchor: "left",
+            open: drawerOpen,
+            onClose: handleDrawerState,
+          }}
+        >
+          <ul className={`${drawerWrapper} ${flexbox}`}>{getMobileLinks()}</ul>
+        </Drawer>
+      </Toolbar>
     );
   };
 
@@ -192,7 +182,7 @@ export default function NavBar() {
   const getMobileLinks = () => {
     return headersData.map(({ label, href }) => {
       return (
-        <li key={label} className={classes.navList}>
+        <li key={label} className={navList}>
           <LinkScroll
             to={href}
             smooth={true}
@@ -200,8 +190,8 @@ export default function NavBar() {
             spy={true}
             offset={-53} //different offset for mobile nav
             exact="true"
-            className={`${classes.navLink} ${classes.flexbox}`}
-            onClick={handleDrawerClose}
+            className={`${navLink} ${flexbox}`}
+            onClick={handleDrawerState}
           >
             {label}
           </LinkScroll>
@@ -214,7 +204,7 @@ export default function NavBar() {
   const getDesktopLinks = () => {
     return headersData.map(({ label, href }) => {
       return (
-        <li key={label} className={classes.navList}>
+        <li key={label} className={navList}>
           <LinkScroll
             id={href + "Link"}
             to={href}
@@ -223,7 +213,7 @@ export default function NavBar() {
             spy={true}
             offset={-76}
             exact="true"
-            className={`${classes.navLink} ${classes.flexbox}`}
+            className={`${navLink} ${flexbox}`}
           >
             {label}
           </LinkScroll>
@@ -232,9 +222,26 @@ export default function NavBar() {
     });
   };
 
+  //Logo button
+  const myLogo = () => {
+    return (
+      <LinkScroll
+        to={"Home"}
+        smooth={true}
+        duration={500}
+        spy={true}
+        offset={-76}
+        exact="true"
+        className={`${navLogoLink} ${flexbox}`}
+      >
+        <img className={navLogo} src={logo} alt="car" />
+      </LinkScroll>
+    );
+  };
+
   return (
     <div data-aos="fade-down" data-aos-delay="100">
-      <AppBar elevation={mobileView ? 1 : 0} className={classes.appbar}>
+      <AppBar elevation={mobileView ? 1 : 0} className={appbar}>
         {mobileView ? navbarMobile() : navbarDesktop()}
       </AppBar>
     </div>

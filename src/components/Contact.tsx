@@ -3,14 +3,9 @@ import ChatOutlinedIcon from "@material-ui/icons/ChatOutlined";
 import CallOutlinedIcon from "@material-ui/icons/CallOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import Svg from "./../img/mobiletesting.svg";
+import globalStyles from "../app/layout/styles";
 
 const useStyles = makeStyles((theme: Theme) => ({
-  flexbox: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column",
-  },
   root: {
     minHeight: "100vh",
     background: theme.palette.primary.main,
@@ -35,12 +30,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
   },
   linkText: {
-    fontSize: "0.9rem !important",
+    fontSize: "1rem !important",
     color: theme.palette.primary.light,
     fontWeight: 400,
-    [theme.breakpoints.up("sm")]: {
-      fontSize: "1rem !important",
-    },
     [theme.breakpoints.up("md")]: {
       fontSize: "1.2rem !important",
     },
@@ -103,16 +95,18 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export default function Contact() {
+  //styles (css in js)
   const classes = useStyles();
+  const { flexbox } = globalStyles();
   return (
-    <div className={`${classes.root} ${classes.flexbox}`} id="Contact">
-      <div className={classes.flexbox}>
+    <div className={`${classes.root} ${flexbox}`} id="Contact">
+      <div className={flexbox}>
         <h2 className={classes.title} >
           Kontakt
         </h2>
       </div>
-      <div className={`${classes.outsideWrapper} ${classes.flexbox}`}>
-        <div className={`${classes.linksWrapper} ${classes.flexbox}`}>
+      <div className={`${classes.outsideWrapper} ${flexbox}`}>
+        <div className={`${classes.linksWrapper} ${flexbox}`}>
           <a
             className={classes.linkTextAnimation}
             href="tel:790605945"

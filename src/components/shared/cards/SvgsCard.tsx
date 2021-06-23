@@ -1,5 +1,13 @@
-import { makeStyles } from "@material-ui/core/styles";
-import { Theme } from "@material-ui/core/styles";
+import { makeStyles, Theme } from "@material-ui/core/styles";
+
+interface ISvgCard {
+  title: string;
+  description: string;
+  imageUrl: string;
+}
+interface IProps {
+  props: ISvgCard;
+}
 
 const useStyles = makeStyles((theme: Theme) => ({
   media: {
@@ -10,7 +18,8 @@ const useStyles = makeStyles((theme: Theme) => ({
       width: "70px",
     },
     //changing svg colour
-    filter: "invert(66%) sepia(41%) saturate(3102%) hue-rotate(308deg) brightness(101%) contrast(88%)",
+    filter:
+      "invert(66%) sepia(41%) saturate(3102%) hue-rotate(308deg) brightness(101%) contrast(88%)",
   },
   cardContent: {
     marginTop: "20px",
@@ -28,35 +37,35 @@ const useStyles = makeStyles((theme: Theme) => ({
     // borderRadius: "10px",
     backgroundColor: "transparent",
     cursor: "pointer",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       height: "270px",
       margin: "32px 20px 16px 20px",
       // icon shake on card hover
       "&:hover > img": {
-        animation: " shake 0.5s alternate",
+        animation: "shake 0.5s alternate",
       },
     },
   },
-  title:{
-    color:theme.palette.primary.light,
-    marginBottom:"0.35em"
+  cardText: {
+    color: theme.palette.primary.light,
+    marginBottom: "0.35em",
   },
 }));
 
 //simple card to display uppercase heading, some description and an icon
-export default function SvgsCard(props: any) {
-  const classes = useStyles();
+const SvgCard: React.FC<IProps> = ({ props }: IProps) => {
+  // styles (css in js)
+  const { card, media, cardContent, cardText } = useStyles();
+  const { title, imageUrl, description } = props;
   return (
-    <div className={classes.card}>
-      <img className={classes.media} src={props.imageUrl} alt=""/>
-      <div className={classes.cardContent}>
-        <h4 className={classes.title}>
-          {props.title}
-        </h4>
-        <h6 className={classes.title}>
-          {props.description}
-        </h6>
+    <div className={card}>
+      <img className={media} src={imageUrl} alt="" />
+      <div className={cardContent}>
+        <h4 className={cardText}>{title}</h4>
+        <h6 className={cardText}>{description}</h6>
       </div>
     </div>
   );
-}
+};
+
+export default SvgCard;

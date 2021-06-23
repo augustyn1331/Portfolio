@@ -1,8 +1,8 @@
 import { Theme, makeStyles } from "@material-ui/core/styles";
 
-const black = "#202020";
-
-const useStyles = makeStyles<Theme>((theme: Theme) => ({
+const dark = "#202020";
+const light = "#ffffffdd";
+const globalStyles = makeStyles<Theme>((theme: Theme) => ({
   "@global": {
     "*": {
       boxSizing: "border-box",
@@ -11,14 +11,11 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       fontFamily: "Poppins, sans-serif",
     },
     html: {
-      fontSize: "19px",
-      [theme.breakpoints.up("md")]: {
-        fontSize: "18px",
-      },
+      fontSize: "18px",
     },
     body: { overflowX: "hidden", backgroundColor: "white" },
     "h1, h2": {
-      color: black,
+      color: dark,
     },
     "h1, h2, h4": {
       fontWeight: 600,
@@ -27,13 +24,13 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       textAlign: "center",
     },
     "h3, h4, h6": {
-      letterSpacing: "0.01em",
+      letterSpacing: "0.01rem",
     },
 
     h1: {
       margin: "1.5rem 1rem 2rem 1rem",
       lineHeight: "1.1em",
-      letterSpacing: "-0.02em",
+      letterSpacing: "-0.02rem",
       fontSize: "1.8rem",
       [theme.breakpoints.up("sm")]: {
         fontSize: "2.4rem",
@@ -47,7 +44,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
     },
     h2: {
       margin: "1rem 1rem 2.5rem 1rem",
-      letterSpacing: "-0.01em",
+      letterSpacing: "-0.01rem",
       fontSize: "2.6rem",
       [theme.breakpoints.up("sm")]: {
         fontSize: "3.2rem",
@@ -58,12 +55,9 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
     },
     h3: {
       fontWeight: 500,
-      letterSpacing: "0.01em",
+      letterSpacing: "0.01rem",
       color: "#45435f",
-      fontSize: "1.05rem",
-      [theme.breakpoints.up("sm")]: {
-        fontSize: "1.1rem",
-      },
+      fontSize: "1.15rem",
       [theme.breakpoints.up("md")]: {
         fontSize: "1.6rem",
       },
@@ -86,6 +80,7 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       },
     },
     p: {
+      color: light,
       fontSize: "0.8rem",
       [theme.breakpoints.up("md")]: {
         fontSize: "1rem",
@@ -115,7 +110,10 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       "100%": { transform: "rotate(0deg)" },
     },
     "@keyframes fadein": { "0%": { opacity: 0 }, "100%": { opacity: 1 } },
-    "@-webkit-keyframes fadein": { "0%": { opacity: 0 }, "100%": { opacity: 1 } },
+    "@-webkit-keyframes fadein": {
+      "0%": { opacity: 0 },
+      "100%": { opacity: 1 },
+    },
   },
 
   //loading page styles
@@ -137,6 +135,12 @@ const useStyles = makeStyles<Theme>((theme: Theme) => ({
       width: "115px",
     },
   },
+  flexbox: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
+  },
 }));
 
-export default useStyles;
+export default globalStyles;
