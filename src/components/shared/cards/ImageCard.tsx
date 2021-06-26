@@ -73,7 +73,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 /* Image Card with hover effect (desktop) */
-const ImageCard: React.FC<IProps> = ({ props }: IProps) => {
+const ImageCard = ({ props }: IProps) => {
   // styles (css in js)
   const { link, card, media, cardContent, cardTitle, cardDescription } =
     useStyles();

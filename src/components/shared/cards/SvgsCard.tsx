@@ -53,7 +53,7 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 //simple card to display uppercase heading, some description and an icon
-const SvgCard: React.FC<IProps> = ({ props }: IProps) => {
+const SvgCard = ({ props }: IProps) => {
   // styles (css in js)
   const { card, media, cardContent, cardText } = useStyles();
   const { title, imageUrl, description } = props;
